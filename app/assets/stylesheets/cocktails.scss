@@ -1,3 +1,27 @@
 // Place all the styles related to the cocktails controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+textarea.cocktail-name {
+  display: block;
+  font-size: 20px;
+  resize: none;
+}
+
+textarea.cocktail-img {
+  display: block;
+  font-size: 20px;
+  resize: none;
+}
+
+textarea.cocktail-desc {
+  margin: 0% 20% 0% 0%;
+  align: left;
+  resize: none;
+}
+
+textarea.cocktail-recipe {
+  margin: 0% 20% 0% 0%;
+  align: left;
+  resize: none;
+}
