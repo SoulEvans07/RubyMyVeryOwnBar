@@ -1,6 +1,44 @@
-<p id="notice"><%= notice %></p>
+<div style="padding: 40px 0px 0px 0px">
+  <ul class="nav nav-tabs">
+    <li><a  href="/cocktails">Cocktails</a></li>
+    <li class="active"><a href="/ingredients">Ingredients</a></li>
+  </ul>
 
-<h1>Ingredients</h1>
+  <div class="tab-content" style="padding: 20px">
+    <div id="ingredientList" class="tab-pane fade-in fade in active">
+      <div class="list-group">
+        <% @ingredients.each do |ingr| %>
+          <a href="/ingredients/<%= ingr.id %>" class="list-group-item" style="height:120px">
+            <img src="<%= ingr.img %>" alt="<%= ingr.name %>" width="100px" height="100px" style="float:left"/>
+            <h4 class="list-group-item-heading" style="float:left; padding: 40px 0px 0px 10px;"><%= ingr.name %></h4>
+            <input type="checkbox" name="<%= ingr.id %>"
+                   <%= ingr.have ? 'checked' : nil %>
+                   style="padding: 50px 50px 50px 50px; float:right;"
+                   onchange="check(this, '<%= ingr.id %>')" />
+          </a>
+        <% end %>
+
+        <a href="/ingredients/new" class="list-group-item" style="height:120px">
+          <img src="/imgs/plus.png" alt="plus" width="100px" height="100px" style="float:left"/>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    function check(cb, id) {
+        var param = {
+            checked: cb.checked
+        };
+
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(param),
+            contentType: 'application/json',
+            url: 'http://localhost:3000/ingredients/' + id
+        });
+    }
+</script>
 
 <table>
   <thead>
@@ -27,7 +65,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Ingredient', new_ingredient_path %>
