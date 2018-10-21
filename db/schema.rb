@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2018_10_02_151533) do
 
   create_table "cocktails", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.string "img"
+    t.string "img", default: "./imgs/glass.jpg"
     t.string "description"
     t.string "recipe"
     t.datetime "created_at", null: false
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2018_10_02_151533) do
 
   create_table "ingredients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.string "img"
+    t.string "img", default: "/imgs/ingredient.jpeg"
     t.string "description"
     t.boolean "have"
     t.datetime "created_at", null: false

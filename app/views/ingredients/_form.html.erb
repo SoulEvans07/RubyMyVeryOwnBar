@@ -4,34 +4,32 @@
       <h2><%= pluralize(ingredient.errors.count, "error") %> prohibited this ingredient from being saved:</h2>
 
       <ul>
-      <% ingredient.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% ingredient.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div style="padding: 10px 20px 20px 20px">
+    <img src="<%= image_path("/imgs/ingredient.jpeg") %>" alt="<%= @ingredient.name %>" width="100px" height="100px" style="float:left"/>
+    <div style="padding: 35px 0px 0px 10px;">
+      <%= form.text_area :name, class: 'ingredient-name', placeholder: 'Name', rows: 1, cols: '50'%>
+      <%= form.text_area :img, value: '/imgs/ingredient.jpeg', class: 'ingredient-img', placeholder: 'Image URL', rows: 1, cols: '50%'%>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :img %>
-    <%= form.text_field :img %>
+  <div style="padding: 20px; float: none; clear:both">
+    <h4>Description</h4>
+    <%= form.text_area :description, class: 'ingredient-desc', rows: '5', cols: '100'%>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :have %>
-    <%= form.check_box :have %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="btn-group btn-group-justified" role="group" style="padding: 0px 20px 20px 20px">
+    <div class="btn-group" role="group">
+      <button class="btn btn-info">Save</button>
+    </div>
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-info" OnClick="window.history.back()">Cancel</button>
+    </div>
   </div>
 <% end %>
