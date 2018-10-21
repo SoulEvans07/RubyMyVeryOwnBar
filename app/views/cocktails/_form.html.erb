@@ -12,10 +12,10 @@
   <% end %>
 
   <div style="padding: 10px 20px 20px 20px">
-    <img src="<%= image_path("/imgs/glass.jpg") %>" alt="<%= @cocktail.name %>" width="100px" height="100px" style="float:left"/>
+    <img src="<%= @cocktail.img %>" alt="<%= @cocktail.name %>" width="100px" height="100px" style="float:left"/>
     <div style="padding: 25px 0px 0px 10px; float:left;">
       <%= form.text_area :name, class: 'cocktail-name', placeholder: 'Name', rows: 1, cols: '50'%>
-      <%= form.text_area :img, value: '/imgs/glass.jpg', class: 'cocktail-img', placeholder: 'Image URL', rows: 1, cols: '50%'%>
+      <%= form.text_area :img, class: 'cocktail-img', placeholder: 'Image URL', rows: 1, cols: '50%'%>
     </div>
 
   </div>

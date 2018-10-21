@@ -1,24 +1,23 @@
-<p id="notice"><%= notice %></p>
+<p id="header2" style="align: justify; font-size: 30px; padding: 30px 0px 10px 20px; color:white; background-color:#378bc1"><%= @ingredient.name %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @ingredient.name %>
-</p>
+<div style="padding: 10px 20px 20px 20px">
+  <img src="<%= @ingredient.img %>" alt="<%= @ingredient.img %>" width="100px" height="100px" style="float:left"/>
+  <h4 id="header4" class="list-group-item-heading" style="float:left; padding: 40px 0px 0px 10px;"><%= @ingredient.name %></h4>
+</div>
 
-<p>
-  <strong>Img:</strong>
-  <%= @ingredient.img %>
-</p>
+<div style="padding: 20px; float: none; clear:both">
+  <h4>Description</h4>
+  <p style="margin: 0% 20% 0% 0%; align: left"><%= @ingredient.description %></p>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @ingredient.description %>
-</p>
-
-<p>
-  <strong>Have:</strong>
-  <%= @ingredient.have %>
-</p>
-
-<%= link_to 'Edit', edit_ingredient_path(@ingredient) %> |
-<%= link_to 'Back', ingredients_path %>
+<div class="btn-group btn-group-justified" role="group" style="padding: 0px 20px 20px 20px">
+  <div class="btn-group" role="group">
+    <button class="btn btn-info" OnClick="location.href='/ingredients/<%= @ingredient.id %>/edit' ">Edit</button>
+  </div>
+  <div class="btn-group" role="group">
+    <%= link_to 'Delete', @ingredient, method: :delete, class: 'btn btn-danger', style: 'color: white', data: { confirm: 'Do you want to remove '+@ingredient.name+'. This action can not be undone.' } %>
+  </div>
+  <div class="btn-group" role="group">
+    <button class="btn btn-warning" OnClick="location.href='/ingredients'">Back</button>
+  </div>
+</div>

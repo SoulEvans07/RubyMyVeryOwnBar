@@ -15,6 +15,7 @@ class IngredientsController < ApplicationController
   # GET /ingredients/new
   def new
     @ingredient = Ingredient.new
+    @ingredient.img = "/imgs/ingredient.jpeg"
   end
 
   # GET /ingredients/1/edit

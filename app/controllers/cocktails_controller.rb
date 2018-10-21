@@ -15,6 +15,7 @@ class CocktailsController < ApplicationController
   # GET /cocktails/new
   def new
     @cocktail = Cocktail.new
+    @cocktail.img = "/imgs/glass.jpg"
   end
 
   # GET /cocktails/1/edit
