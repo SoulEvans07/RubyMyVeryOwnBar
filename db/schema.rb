@@ -10,20 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_02_151533) do
+ActiveRecord::Schema.define(version: 2018_10_21_214911) do
 
   create_table "cocktails", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.string "img", default: "./imgs/glass.jpg"
+    t.string "img"
     t.string "description"
     t.string "recipe"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "cocktails_ingredients", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "cocktail_id"
+    t.bigint "ingredient_id"
+    t.index ["cocktail_id"], name: "index_cocktails_ingredients_on_cocktail_id"
+    t.index ["ingredient_id"], name: "index_cocktails_ingredients_on_ingredient_id"
+  end
+
   create_table "ingredients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.string "img", default: "/imgs/ingredient.jpeg"
+    t.string "img"
     t.string "description"
     t.boolean "have"
     t.datetime "created_at", null: false

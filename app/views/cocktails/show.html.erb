@@ -18,7 +18,9 @@
 <div style="padding: 20px; float:none">
   <h4>Ingredients</h4>
   <div class="list-group">
-
+    <% @cocktail.ingredients.each do |ingr| %>
+      <p><%= ingr.name %></p>
+    <% end %>
   </div>
 </div>
 
