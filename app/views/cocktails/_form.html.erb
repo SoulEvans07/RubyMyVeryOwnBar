@@ -14,26 +14,34 @@
   <div style="padding: 10px 20px 20px 20px">
     <img src="<%= @cocktail.img %>" alt="<%= @cocktail.name %>" width="100px" height="100px" style="float:left"/>
     <div style="padding: 25px 0px 0px 10px; float:left;">
-      <%= form.text_area :name, class: 'cocktail-name', placeholder: 'Name', rows: 1, cols: '50'%>
-      <%= form.text_area :img, class: 'cocktail-img', placeholder: 'Image URL', rows: 1, cols: '50%'%>
+      <%= form.text_area :name, class: 'cocktail-name', placeholder: 'Name', rows: 1, cols: '50' %>
+      <%= form.text_area :img, class: 'cocktail-img', placeholder: 'Image URL', rows: 1, cols: '50%' %>
     </div>
 
   </div>
 
   <div style="padding: 20px; float: none; clear:both">
     <h4>Description</h4>
-    <%= form.text_area :description, class: 'cocktail-desc', rows: '5', cols: '100'%>
+    <%= form.text_area :description, class: 'cocktail-desc', rows: '5', cols: '100' %>
   </div>
 
   <div style="padding: 20px;">
     <h4>Recipe</h4>
-    <%= form.text_area :recipe, class: 'cocktail-recipe', rows: '5', cols: '100'%>
+    <%= form.text_area :recipe, class: 'cocktail-recipe', rows: '5', cols: '100' %>
   </div>
 
 
   <div style="padding: 20px; float:none">
     <h4>Ingredients</h4>
     <div class="list-group">
+      <% @ingredients.each do |ingr| %>
+        <a class="list-group-item" style="height:120px">
+          <img src="<%= ingr.img %>" alt="<%= ingr.name %>" width="100px" height="100px" style="float:left"/>
+          <h4 class="list-group-item-heading" style="float:left; padding: 40px 0px 0px 10px;"><%= ingr.name %></h4>
+          <input form="save" name="ingredients[]" value="<%= ingr.id %>" type="checkbox"
+                 style=" padding: 50px 50px 50px 50px; float:right;"/>
+        </a>
+      <% end %>
     </div>
   </div>
 
