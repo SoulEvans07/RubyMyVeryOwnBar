@@ -2,8 +2,8 @@ class CreateCocktailsAndIngredients < ActiveRecord::Migration[5.2]
   def change
     create_table :cocktails do |t|
       t.string :name
-      t.string :img
-      t.string :description
+      t.text :img
+      t.text :description
       t.string :recipe
 
       t.timestamps
@@ -11,8 +11,8 @@ class CreateCocktailsAndIngredients < ActiveRecord::Migration[5.2]
 
     create_table :ingredients do |t|
       t.string :name
-      t.string :img
-      t.string :description
+      t.text :img
+      t.text :description
       t.boolean :have
 
       t.timestamps

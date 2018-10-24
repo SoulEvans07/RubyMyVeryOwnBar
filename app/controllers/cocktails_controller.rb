@@ -4,6 +4,7 @@ class CocktailsController < ApplicationController
   # GET /cocktails
   # GET /cocktails.json
   def index
+    cocktail = Cocktail.new(img: "/imgs/glass.jpg")
     @cocktails = Cocktail.all
   end
 
@@ -28,14 +29,16 @@ class CocktailsController < ApplicationController
 
     respond_to do |format|
       if @cocktail.save
-        for id in params['cocktail']['ingredients']
-          @cocktail.ingredients << Ingredient.find(id)
+        if (params['cocktail']['ingredients'] != nil)
+          for id in params['cocktail']['ingredients']
+            @cocktail.ingredients << Ingredient.find(id)
+          end
         end
-        format.html { redirect_to @cocktail, notice: 'Cocktail was successfully created.' }
-        format.json { render :show, status: :created, location: @cocktail }
+        format.html {redirect_to @cocktail, notice: 'Cocktail was successfully created.'}
+        format.json {render :show, status: :created, location: @cocktail}
       else
-        format.html { render :new }
-        format.json { render json: @cocktail.errors, status: :unprocessable_entity }
+        format.html {render :new}
+        format.json {render json: @cocktail.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -45,14 +48,16 @@ class CocktailsController < ApplicationController
   def update
     respond_to do |format|
       if @cocktail.update(cocktail_params)
-        for id in params['cocktail']['ingredients']
-          @cocktail.ingredients << Ingredient.find(id)
+        if (params['cocktail']['ingredients'] != nil)
+          for id in params['cocktail']['ingredients']
+            @cocktail.ingredients << Ingredient.find(id)
+          end
         end
-        format.html { redirect_to @cocktail, notice: 'Cocktail was successfully updated.' }
-        format.json { render :show, status: :ok, location: @cocktail }
+        format.html {redirect_to @cocktail, notice: 'Cocktail was successfully updated.'}
+        format.json {render :show, status: :ok, location: @cocktail}
       else
-        format.html { render :edit }
-        format.json { render json: @cocktail.errors, status: :unprocessable_entity }
+        format.html {render :edit}
+        format.json {render json: @cocktail.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -62,19 +67,20 @@ class CocktailsController < ApplicationController
   def destroy
     @cocktail.destroy
     respond_to do |format|
-      format.html { redirect_to cocktails_url, notice: 'Cocktail was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html {redirect_to cocktails_url, notice: 'Cocktail was successfully destroyed.'}
+      format.json {head :no_content}
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_cocktail
-      @cocktail = Cocktail.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def cocktail_params
-      params.require(:cocktail).permit(:name, :img, :description, :recipe, {ingredients: [:id]})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_cocktail
+    @cocktail = Cocktail.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def cocktail_params
+    params.require(:cocktail).permit(:name, :img, :description, :recipe, {ingredients: [:id]})
+  end
 end
