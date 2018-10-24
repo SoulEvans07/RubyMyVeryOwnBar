@@ -4,7 +4,11 @@ class IngredientsController < ApplicationController
   # GET /ingredients
   # GET /ingredients.json
   def index
-    @ingredients = Ingredient.all
+    ingredient = Ingredient.new(name: "Static Ingredient",img: "/imgs/ingredient.jpeg", have: true)
+    @ingredients = [ingredient]
+    Ingredient.all.each do |ingr|
+      @ingredients << ingr
+    end
   end
 
   # GET /ingredients/1

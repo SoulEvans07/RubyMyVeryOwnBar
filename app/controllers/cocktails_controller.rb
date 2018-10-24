@@ -4,8 +4,11 @@ class CocktailsController < ApplicationController
   # GET /cocktails
   # GET /cocktails.json
   def index
-    cocktail = Cocktail.new(img: "/imgs/glass.jpg")
-    @cocktails = Cocktail.all
+    cocktail = Cocktail.new(name: "Static Cocktail",img: "/imgs/glass.jpg")
+    @cocktails = [cocktail]
+    Cocktail.all.each do |ct|
+      @cocktails << ct
+    end
   end
 
   # GET /cocktails/1
