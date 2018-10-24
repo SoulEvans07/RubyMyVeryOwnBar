@@ -34,11 +34,19 @@
   <div style="padding: 20px; float:none">
     <h4>Ingredients</h4>
     <div class="list-group">
-      <% @ingredients.each do |ingr| %>
+      <% Ingredient.all.each do |ingr| %>
         <a class="list-group-item" style="height:120px">
           <img src="<%= ingr.img %>" alt="<%= ingr.name %>" width="100px" height="100px" style="float:left"/>
           <h4 class="list-group-item-heading" style="float:left; padding: 40px 0px 0px 10px;"><%= ingr.name %></h4>
-          <input form="save" name="ingredients[]" value="<%= ingr.id %>" type="checkbox"
+          <input name="cocktail[ingredients][]" value=<%= ingr.id %> type="checkbox"
+                 <% $found = false %>
+                 <% @cocktail.ingredients.each do |ing| %>
+                 <% if ing.id == ingr.id
+                      $found = true
+                      break %>
+                 <% end %>
+                 <% end %>
+                 <%= $found ? 'checked' : nil %>
                  style=" padding: 50px 50px 50px 50px; float:right;"/>
         </a>
       <% end %>

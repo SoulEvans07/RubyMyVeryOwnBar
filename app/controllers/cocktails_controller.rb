@@ -15,7 +15,6 @@ class CocktailsController < ApplicationController
   # GET /cocktails/new
   def new
     @cocktail = Cocktail.new(img: "/imgs/glass.jpg")
-    @ingredients = Ingredient.all
   end
 
   # GET /cocktails/1/edit
@@ -43,6 +42,9 @@ class CocktailsController < ApplicationController
   def update
     respond_to do |format|
       if @cocktail.update(cocktail_params)
+        for id in params['cocktail']['ingredients']
+          @cocktail.ingredients << Ingredient.find(id)
+        end
         format.html { redirect_to @cocktail, notice: 'Cocktail was successfully updated.' }
         format.json { render :show, status: :ok, location: @cocktail }
       else
@@ -70,6 +72,6 @@ class CocktailsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cocktail_params
-      params.require(:cocktail).permit(:name, :img, :description, :recipe)
+      params.require(:cocktail).permit(:name, :img, :description, :recipe, {ingredients: [:id]})
     end
 end
