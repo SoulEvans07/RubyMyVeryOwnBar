@@ -28,6 +28,9 @@ class CocktailsController < ApplicationController
 
     respond_to do |format|
       if @cocktail.save
+        for id in params['cocktail']['ingredients']
+          @cocktail.ingredients << Ingredient.find(id)
+        end
         format.html { redirect_to @cocktail, notice: 'Cocktail was successfully created.' }
         format.json { render :show, status: :created, location: @cocktail }
       else
