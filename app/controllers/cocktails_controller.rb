@@ -1,11 +1,14 @@
 class CocktailsController < ApplicationController
+  before_action :set_static_list
   before_action :set_cocktail, only: [:show, :edit, :update, :destroy]
 
   # GET /cocktails
   # GET /cocktails.json
   def index
-    cocktail = Cocktail.new(name: "Static Cocktail",img: "/imgs/glass.jpg")
-    @cocktails = [cocktail]
+    @cocktails = []
+    @static_cocktails.each do |ct|
+      @cocktails << ct
+    end
     Cocktail.all.each do |ct|
       @cocktails << ct
     end
@@ -79,7 +82,18 @@ class CocktailsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_cocktail
-    @cocktail = Cocktail.find(params[:id])
+    if Integer(params[:id]) < 0
+      @cocktail = @static_cocktails.select {|ct| ct.id == Integer(params[:id])}.first
+    else
+      @cocktail = Cocktail.find(params[:id])
+    end
+  end
+
+  def set_static_list
+    @static_cocktails = []
+    @static_cocktails << Cocktail.new(id: -1, name: "Static Cocktail 1", img: "/imgs/glass.jpg")
+    @static_cocktails << Cocktail.new(id: -2, name: "Static Cocktail 2", img: "/imgs/glass.jpg")
+    @static_cocktails << Cocktail.new(id: -3, name: "Static Cocktail 3", img: "/imgs/glass.jpg")
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

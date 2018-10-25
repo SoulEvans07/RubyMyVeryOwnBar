@@ -7,12 +7,12 @@
   <div class="tab-content" style="padding: 20px; background-color:#fff; border-top: solid 1px #ebf4f9">
     <div id="cocktailList" class="tab-pane fade-in fade in active">
       <div class="list-group">
-        <% @cocktails.each do |cocktail| %>
-          <a href="cocktails/<%= cocktail.id %>" class="list-group-item" style="height:120px">
-            <img src="<%= cocktail.img %>" alt="<%= cocktail.name %>" width="100px" height="100px" style="float:left"/>
+        <% @cocktails.each do |ct| %>
+          <a href="cocktails/<%= ct.id %>" class="list-group-item" style="height:120px">
+            <img src="<%= ct.img %>" alt="<%= ct.name %>" width="100px" height="100px" style="float:left"/>
             <div class="list-group-item-heading"
                  style="float:left; padding: 30px 0px 0px 10px;">
-              <h4><%= cocktail.name %></h4>
+              <h4><%= ct.name %></h4>
             </div>
           </a>
         <% end %>
