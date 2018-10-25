@@ -1,0 +1,8 @@
+<h1>Recover forgotten password</h1>
+<fieldset>
+  <legend>Please, give your email address</legend>
+  <%= form_tag '/users/recover', method: :post do %>
+    <%= text_field_tag 'name', '', size: '50' %><br/>
+    <%= submit_tag 'Recover' %>
+  <% end %>
+</fieldset>
