@@ -1,13 +1,8 @@
 Rails.application.routes.draw do
-  # get 'users' => 'users#index'
-  # get 'users/:id' => 'users#show'
-  # get 'users/new' => 'users#new'
-  # post 'users/create'
-  # get 'users/:id/edit' => 'users#edit'
-  # put 'users/:id/update' => 'users/update'
-  # get 'users/forgotten' => 'users#forgotten'
-  # post 'users/recover'
-  # delete 'users/:id/destroy'
+  get 'welcome', to: 'login#show', as: 'welcome'
+
+  match 'sessions/create', to: 'sessions#create', via: :post, as: 'login'
+  match 'sessions/destroy', to: 'sessions#destroy', via: [:delete, :get], as: 'logout'
 
   get 'users', to: 'users#index', as: 'users'
 
@@ -23,8 +18,9 @@ Rails.application.routes.draw do
 
   get 'users/forgotten'
   post 'users/send_forgotten'
+
   resources :cocktails
   resources :ingredients
-  root :to => redirect('/cocktails')
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  root :to => redirect('/welcome')
 end

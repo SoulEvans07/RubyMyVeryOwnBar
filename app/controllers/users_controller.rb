@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :check_auth
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -14,7 +15,7 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
+    @user = User.new(img: "./imgs/user.png")
   end
 
   # GET /users/1/edit
@@ -36,7 +37,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to users_path, notice: 'User was successfully created.' }
+        format.html { redirect_to welcome_path, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -50,7 +51,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to users_path, notice: 'User was successfully updated.' }
+        format.html { redirect_to profile_path, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -70,6 +71,12 @@ class UsersController < ApplicationController
   end
 
   private
+    def check_auth
+      unless session[:user]
+        redirect_to welcome_path
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])

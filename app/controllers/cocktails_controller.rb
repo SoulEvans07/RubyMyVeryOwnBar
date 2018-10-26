@@ -1,4 +1,5 @@
 class CocktailsController < ApplicationController
+  before_action :set_user
   before_action :set_static_list
   before_action :set_cocktail, only: [:show, :edit, :update, :destroy]
 
@@ -81,6 +82,10 @@ class CocktailsController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(session[:user])
+  end
+
   def set_cocktail
     if Integer(params[:id]) < 0
       @cocktail = @static_cocktails.select {|ct| ct.id == Integer(params[:id])}.first
