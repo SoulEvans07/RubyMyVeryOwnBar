@@ -75,7 +75,10 @@ class IngredientsController < ApplicationController
     unless session[:user]
       redirect_to welcome_path
     end
-    @user = User.find(session[:user])
+    @user = User.find_by_id(session[:user])
+    unless @user
+      redirect_to logout_path
+    end
   end
 
   # Use callbacks to share common setup or constraints between actions.
