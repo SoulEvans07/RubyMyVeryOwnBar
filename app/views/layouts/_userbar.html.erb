@@ -1,5 +1,5 @@
 <div style="background-color: #5bc0de">
   <img src="<%= user.img %>" style="width: 30px; height: 30px" >
-  <b><%= user.name %></b> |
+  <a href="<%= profile_path(user) %>"><b><%= user.name %></b></a> |
   <%= link_to "Logout", logout_path %>
 </div>
