@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_26_175755) do
+ActiveRecord::Schema.define(version: 2018_10_26_232306) do
 
   create_table "cocktails", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(version: 2018_10_26_175755) do
     t.bigint "ingredient_id"
     t.index ["cocktail_id"], name: "index_cocktails_ingredients_on_cocktail_id"
     t.index ["ingredient_id"], name: "index_cocktails_ingredients_on_ingredient_id"
+  end
+
+  create_table "cocktails_users", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "cocktail_id"
+    t.index ["cocktail_id"], name: "index_cocktails_users_on_cocktail_id"
+    t.index ["user_id"], name: "index_cocktails_users_on_user_id"
   end
 
   create_table "ingredients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

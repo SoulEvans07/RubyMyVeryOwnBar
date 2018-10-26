@@ -10,7 +10,7 @@ class CocktailsController < ApplicationController
     @static_cocktails.each do |ct|
       @cocktails << ct
     end
-    Cocktail.all.each do |ct|
+    @user.cocktails.each do |ct|
       @cocktails << ct
     end
   end
@@ -41,7 +41,9 @@ class CocktailsController < ApplicationController
             @cocktail.ingredients << Ingredient.find(id)
           end
         end
-        format.html {redirect_to @cocktail, notice: 'Cocktail was successfully created.'}
+        @user.cocktails << @cocktail
+
+        format.html {redirect_to @cocktail, notice: 'Cocktail was successfully created for '+@user.name+'.'}
         format.json {render :show, status: :created, location: @cocktail}
       else
         format.html {render :new}
