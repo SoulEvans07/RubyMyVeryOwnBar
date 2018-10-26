@@ -1,4 +1,5 @@
 class IngredientsController < ApplicationController
+  before_action :check_auth
   before_action :set_static_list
   before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
 
@@ -69,6 +70,13 @@ class IngredientsController < ApplicationController
   end
 
   private
+
+  def check_auth
+    unless session[:user]
+      redirect_to welcome_path
+    end
+    @user = User.find(session[:user])
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_ingredient

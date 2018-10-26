@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :check_auth
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -37,11 +36,11 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to welcome_path, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+        format.html {redirect_to welcome_path, notice: 'User was successfully created.'}
+        format.json {render :show, status: :created, location: @user}
       else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.html {render :new}
+        format.json {render json: @user.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -51,11 +50,11 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to profile_path, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+        format.html {redirect_to profile_path, notice: 'User was successfully updated.'}
+        format.json {render :show, status: :ok, location: @user}
       else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.html {render :edit}
+        format.json {render json: @user.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -65,25 +64,20 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_path, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html {redirect_to users_path, notice: 'User was successfully destroyed.'}
+      format.json {head :no_content}
     end
   end
 
   private
-    def check_auth
-      unless session[:user]
-        redirect_to welcome_path
-      end
-    end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:name, :email, :password)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:name, :email, :password)
+  end
 end

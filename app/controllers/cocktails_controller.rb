@@ -1,5 +1,5 @@
 class CocktailsController < ApplicationController
-  before_action :set_user
+  before_action :check_auth
   before_action :set_static_list
   before_action :set_cocktail, only: [:show, :edit, :update, :destroy]
 
@@ -81,8 +81,10 @@ class CocktailsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_user
+  def check_auth
+    unless session[:user]
+      redirect_to welcome_path
+    end
     @user = User.find(session[:user])
   end
 
