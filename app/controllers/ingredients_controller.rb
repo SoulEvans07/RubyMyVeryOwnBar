@@ -29,6 +29,12 @@ class IngredientsController < ApplicationController
   def edit
   end
 
+  def have
+    @ingr = Ingredient.find_by_id(params[:id])
+    @ingr.have = params[:checked]
+    @ingr.save
+  end
+
   # POST /ingredients
   # POST /ingredients.json
   def create

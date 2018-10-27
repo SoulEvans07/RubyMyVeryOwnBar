@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   post 'users/send_forgotten'
 
   resources :cocktails
+
+  post 'ingredients/:id/have', to: 'ingredients#have', as: 'store'
+
   resources :ingredients
 
   root :to => redirect('/welcome')
