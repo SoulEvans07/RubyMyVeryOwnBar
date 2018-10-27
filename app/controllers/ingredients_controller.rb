@@ -1,7 +1,7 @@
 class IngredientsController < ApplicationController
   before_action :check_auth
   before_action :set_static_list
-  before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
+  before_action :set_ingredient, only: [:show, :edit, :have, :update, :destroy]
 
   # GET /ingredients
   # GET /ingredients.json
@@ -30,9 +30,10 @@ class IngredientsController < ApplicationController
   end
 
   def have
-    @ingr = Ingredient.find_by_id(params[:id])
-    @ingr.have = params[:checked]
-    @ingr.save
+    @ingredient.have = params[:checked]
+    unless Integer(params[:id]) < 0
+      @ingredient.save
+    end
   end
 
   # POST /ingredients
