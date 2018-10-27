@@ -15,6 +15,14 @@ class CocktailsController < ApplicationController
     end
   end
 
+  def share
+    @with = User.find_by_name(params[:user])
+    logger.info(@with)
+    @ct = Cocktail.find_by_id(params[:id])
+    logger.info(@ct)
+    @with.cocktails << @ct
+  end
+
   # GET /cocktails/1
   # GET /cocktails/1.json
   def show

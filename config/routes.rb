@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   get 'users/forgotten'
   post 'users/send_forgotten'
 
+  post 'cocktails/:id/share', to: 'cocktails#share', as: 'share'
+
   resources :cocktails
 
   post 'ingredients/:id/have', to: 'ingredients#have', as: 'store'

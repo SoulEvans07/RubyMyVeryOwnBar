@@ -17,6 +17,9 @@
                  style="float:left; padding: 30px 0px 0px 10px;">
               <h4><%= ct.name %></h4>
             </div>
+            <input type="button" value="SHARE" class="share"
+                   style="float:right;"
+                   onclick="share_it(<%= ct.id %>, '<%= share_path(ct.id) %>')">
           </a>
         <% end %>
 
@@ -27,3 +30,33 @@
     </div>
   </div>
 </div>
+<script>
+    $(".share").click(function (e) {
+        if (e.target.tagName === "INPUT") {
+            e.preventDefault();
+
+            var btn = $("input[type='button'][name='" + e.target.name + "']");
+            btn.click();
+        }
+    });
+
+    function share_it(id, path) {
+        var username = prompt("Share with");
+        $.ajax({
+            type: 'POST',
+            data: {
+                authenticity_token: "<%= form_authenticity_token %>",
+                id: id,
+                user: username
+            },
+            dataType: 'json',
+            url: path,
+            success: function (res) {
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(xhr.status);
+                console.log(thrownError);
+            }
+        });
+    }
+</script>
