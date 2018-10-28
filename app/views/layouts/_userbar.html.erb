@@ -1,5 +1,22 @@
-<div style="background-color: #5bc0de">
-  <img src="<%= user.img %>" style="width: 30px; height: 30px" >
-  <a href="<%= profile_path(user) %>"><b><%= user.name %></b></a> |
-  <%= link_to "Logout", logout_path %>
+<% content_for :head do %>
+  <link rel="stylesheet" href="/assets/userbar.css.scss">
+<% end %>
+<div class="user-bar" style="height: 38px">
+  <div class="logout"><%= link_to "Logout", logout_path, class: 'profile-link'%></div>
+  <div class="separator">|</div>
+  <div class="notifs">
+    <a href="<%= profile_path(user) %>" class="profile-link">
+      <div class="notif-highlight <%= user.cocktails.length > 0 ? 'notif-red' : nil %>">
+        <%= user.cocktails.length %>
+        <img src="/imgs/bell.png" style="height: 12px">
+      </div>
+    </a>
+  </div>
+  <div class="separator">|</div>
+  <a href="<%= profile_path(user) %>" class="profile-link">
+    <div class="profile">
+      <img src="<%= user.img %>" class="profile-picture">
+      <span class="username"><%= user.name %></span>
+    </div>
+  </a>
 </div>
