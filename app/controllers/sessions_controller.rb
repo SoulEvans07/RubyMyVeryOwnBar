@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def create
-    @user = User.authenticate params[:email], params[:password]
+    @user = User.authenticate params[:username], params[:password]
     if @user
       flash[:notice] = "Logged in successfully"
       session[:user] = @user.id

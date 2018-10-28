@@ -23,8 +23,8 @@ class User < ApplicationRecord
     self.encrypted_password = User.encrypt self.password, self.salt
   end
 
-  def self.authenticate(email, pass)
-    user = User.where(email: email).first
+  def self.authenticate(username, pass)
+    user = User.where(name: username).first
     user && user.authenticated?(pass) ? user : nil
   end
 

@@ -1,8 +1,8 @@
 <fieldset>
   <legend>Login</legend>
   <%= form_tag '/sessions/create', method: :post do %>
-    <%= label_tag 'email', "Email address" %>
-    <%= text_field_tag 'email', '', size: '18' %><br/>
+    <%= label_tag 'username', "Username" %>
+    <%= text_field_tag 'username', '', size: '18' %><br/>
     <%= label_tag 'password', "Password" %>
     <%= password_field_tag 'password', '', size: '18' %><br/>
     <%= submit_tag 'Login' %>
