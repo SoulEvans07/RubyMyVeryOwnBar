@@ -12,12 +12,12 @@ Rails.application.routes.draw do
   get 'users/:id/edit', to: 'users#edit' , as: 'edit_profile'
   put 'users/:id', to: 'users#update'
 
+  get 'users/forgotten'
+  post 'users/send_forgotten'
+
   get 'users/:id', to: 'users#show', as: 'profile'
 
   delete 'users/:id/destroy', to: 'users#destroy', as: 'delete_profile'
-
-  get 'users/forgotten'
-  post 'users/send_forgotten'
 
   post 'cocktails/:id/share', to: 'cocktails#share', as: 'share'
 

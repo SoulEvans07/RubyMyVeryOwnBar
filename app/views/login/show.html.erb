@@ -1,2 +1,21 @@
-<h1>Welcome</h1>
-<%= render 'layouts/loginform' %>
+<div class="login-box">
+  <div class="title">My Very Own Bar</div>
+  <fieldset style="text-align: center">
+    <%= form_tag '/sessions/create', method: :post do %>
+      <div class="login-field-box">
+        <%= text_field_tag 'username', '', class: 'login-field', placeholder: 'Username' %><br/>
+        <%= password_field_tag 'password', '', class: 'login-field', placeholder: 'Password' %><br/>
+      </div>
+      <%= submit_tag 'Login', class: 'login-btn' %>
+    <% end %>
+  </fieldset>
+  <br>
+  <div style="text-align: center">
+    <%= link_to "Forgot password?", '/users/forgotten', class: 'basic-link' %><br>
+  </div>
+</div>
+<div class="login-box">
+  <div style="text-align: center">
+    Don't have an account? <%= link_to "Register", register_path, class: 'basic-link' %>
+  </div>
+</div>
