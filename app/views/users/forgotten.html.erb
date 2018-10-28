@@ -1,8 +1,16 @@
-<h1>Recover forgotten password</h1>
-<fieldset>
-  <legend>Please, give your email address</legend>
-  <%= form_tag '/users/recover', method: :post do %>
-    <%= text_field_tag 'name', '', size: '50' %><br/>
-    <%= submit_tag 'Recover' %>
-  <% end %>
-</fieldset>
+<div class="forgotten-box">
+  <img src="/imgs/lock.png" class="lock"><br>
+  <div class="forgotten-title">Trouble Logging In?</div>
+  <fieldset>
+    <span class="forgotten-expl">Enter your email and we'll send you a link to get back into your account.</span>
+    <%= form_tag '/users/recover', method: :post do %>
+      <div class="forgotten-field-box">
+        <%= text_field_tag 'email', '', class: 'forgotten-field', placeholder: 'Email' %><br/>
+      </div>
+      <%= submit_tag 'Send Login Link', class: 'forgotten-btn' %>
+    <% end %>
+  </fieldset>
+</div>
+<div class="back-box">
+  <%= link_to 'Back to Login', welcome_path, class: 'back-btn' %>
+</div>
