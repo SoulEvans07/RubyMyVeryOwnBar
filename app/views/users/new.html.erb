@@ -1,29 +1,23 @@
-<h1>Create new user</h1>
-<div>
-  <fieldset>
-    <legend>Register a new user</legend>
-    <%= form_for :user, url: '/users', method: :post do |form| %>
-      <div>
-        <%= form.label :name %>
-        <%= form.text_field :name, size: 30 %>
-      </div>
-      <div>
-        <%= form.label :email %>
-        <%= form.text_field :email, size: 40 %>
-      </div>
-      <div>
-        <%= form.label :password %>
-        <%= form.password_field :password, size: 20 %>
-      </div>
-      <div>
-        <%= form.label :password_confirmation %>
-        <%= form.password_field :password_confirmation, size: 20 %>
-      </div>
-      <div>
-        <%= form.submit 'Register' %>
-      </div>
-    <% end %>
-  </fieldset>
+<div class="register-box">
+  <div class="title">My Very Own Bar</div>
+  <div>
+    <fieldset>
+      <%= form_for :user, url: '/users', method: :post do |form| %>
+        <div class="register-field-box">
+          <%= form.text_field :name, size: 30, class: 'register-field', placeholder: 'Username' %>
+          <%= form.text_field :email, size: 40, class: 'register-field', placeholder: 'Email' %>
+          <%= form.password_field :password, size: 20, class: 'register-field', placeholder: 'Password' %>
+          <%= form.password_field :password_confirmation, size: 20,
+                                  class: 'register-field', placeholder: 'Password confirmation' %>
+        </div>
+        <%= form.submit 'Register', class: 'register-btn' %>
+      <% end %>
+    </fieldset>
+  </div>
+  <br>
 </div>
-<br>
-<%= link_to "Back", :back %>
+<div class="register-box">
+  <div style="text-align: center">
+    Have an account? <%= link_to "Log in", welcome_path, class: 'basic-link' %>
+  </div>
+</div>
