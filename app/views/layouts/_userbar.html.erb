@@ -1,10 +1,10 @@
 <% content_for :head do %>
   <link rel="stylesheet" href="/assets/userbar.css.scss">
 <% end %>
-<div class="userbar user-bar" style="height: 38px">
-  <div style="display: inline-block;">
-    <div style="display: inline-block; font-weight: bold; color: white; padding: 10px;">•</div>
-    <img src="/imgs/logo-white.png" style="height: 28px;">
+<div class="userbar user-bar">
+  <div class="userbar logo-box">
+    <div class="userbar dot">•</div>
+    <img src="/imgs/logo-white.png" class="userbar logo-img">
   </div>
 
   <a href="<%= cocktails_path %>" class="userbar
@@ -22,7 +22,7 @@
     <a href="<%= profile_path(user) %>" class="userbar profile-link">
       <div class="userbar notif-highlight <%= user.cocktails.length > 0 ? 'notif-red' : nil %>">
         <%= user.cocktails.length %>
-        <img src="/imgs/bell.png" style="height: 12px">
+        <img src="/imgs/bell.png" class="userbar notif-bell">
       </div>
     </a>
   </div>
