@@ -29,9 +29,6 @@ class User < ApplicationRecord
   end
 
   def authenticated?(pass)
-    logger.info(encrypted_password)
-    logger.info(pass)
-    logger.info(User.encrypt(pass, self.salt))
     self.encrypted_password == User.encrypt(pass, self.salt)
   end
 end

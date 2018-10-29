@@ -1,6 +1,37 @@
-<h1>Editing User</h1>
+<%= render 'layouts/userbar', user: @user %>
 
-<%= render 'form', user: @user %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', cocktails_path %>
+<div class="user-edit edit-box">
+  <h3 class="register-text">Edit Profile</h3>
+  <img class="user-edit profile-picture" src="<%= @user.img %>">
+  <div>
+    <fieldset>
+      <%= form_for :user, url: update_profile_path(@user), method: :put do |form| %>
+        <div class="register-field-box">
+          <div class="user-edit field-row">
+            <aside class="user-edit field-text">Username:</aside>
+            <%= form.text_field :name, class: 'user-edit field', placeholder: 'Username' %>
+          </div>
+          <div class="user-edit field-row">
+            <aside class="user-edit field-text">Email:</aside>
+            <%= form.text_field :email, class: 'user-edit field', placeholder: 'Email' %>
+          </div>
+          <div class="user-edit field-row">
+            <aside class="user-edit field-text">Image:</aside>
+            <%= form.text_field :img, size: 40,
+                                class: 'user-edit field', placeholder: '/imgs/user.png' %>
+          </div>
+          <div class="user-edit field-row">
+            <aside class="user-edit field-text">New Password:</aside>
+            <%= form.password_field :password, size: 20,
+                                    class: 'user-edit field', placeholder: 'New Password' %>
+          </div>
+          <div class="user-edit field-row">
+            <aside class="user-edit field-text">Confirm Password:</aside>
+            <%= form.password_field :password_confirmation, class: 'user-edit field', placeholder: 'Password confirmation' %>
+          </div>
+        </div>
+        <%= form.submit 'Save', class: 'user-edit save-btn' %>
+      <% end %>
+    </fieldset>
+  </div>
+</div>

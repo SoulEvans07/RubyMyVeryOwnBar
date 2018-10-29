@@ -6,10 +6,13 @@
     <div class="user-show statistic-element-first"></div>
     <div class="user-show statistic-element-second"><b><%= @user.cocktails.length %></b> cocktails</div>
     <div class="user-show statistic-element"><b><%= Ingredient.all.length %></b> ingredients</div>
+    <a href=<%= edit_profile_path(@user) %>>
+      <div class="user-show statistic-element"><b>Edit</b></div>
+    </a>
   </div>
   <div class="user-show user">
     <img src="<%= @user.img %>" class="user-show profile-picture">
     <h3 class="user-show username"><%= @user.name %> (<%= @user.email %>)</h3>
   </div>
-<!-- TODO: list of shared cocktails-->
+  <!-- TODO: list of shared cocktails-->
 </div>
