@@ -16,7 +16,9 @@
     <div class="userbar profile-link">Ingredients</div>
   </a>
 
-  <div class="userbar logout"><%= link_to "Logout", logout_path, class: 'userbar profile-link' %></div>
+  <a href="<%= logout_path %>" class="userbar profile-link">
+    <div class="userbar logout">Logout</div>
+  </a>
   <div class="userbar separator right">|</div>
   <a href="<%= profile_path(user) %>" class="userbar profile-link">
     <div class="userbar profile">
