@@ -2,8 +2,9 @@
   <link rel="stylesheet" href="/assets/userbar.css.scss">
 <% end %>
 <div class="userbar user-bar" style="height: 38px">
-  <div style="display: inline-block; padding: 5px; position: relative; left: 30%">
-    <img src="/imgs/logo-white.png" style="height: 30px">
+  <div style="display: inline-block;">
+    <div style="display: inline-block; font-weight: bold; color: white; padding: 10px;">•</div>
+    <img src="/imgs/logo-white.png" style="height: 28px;">
   </div>
 
   <a href="<%= cocktails_path %>" class="userbar
@@ -16,7 +17,7 @@
   </a>
 
   <div class="userbar logout"><%= link_to "Logout", logout_path, class: 'userbar profile-link' %></div>
-  <div class="userbar separator">|</div>
+  <div class="userbar separator right">|</div>
   <div class="userbar notifs">
     <a href="<%= profile_path(user) %>" class="userbar profile-link">
       <div class="userbar notif-highlight <%= user.cocktails.length > 0 ? 'notif-red' : nil %>">
@@ -25,7 +26,7 @@
       </div>
     </a>
   </div>
-  <div class="userbar separator">|</div>
+  <div class="userbar separator right">|</div>
   <a href="<%= profile_path(user) %>" class="userbar profile-link">
     <div class="userbar profile">
       <img src="<%= user.img %>" class="userbar profile-picture">

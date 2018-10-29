@@ -73,9 +73,16 @@
 }
 
 .userbar.separator {
-  float: right;
   padding: 7px;
   margin: 2px;
+}
+
+.userbar.separator.left {
+  float: left;
+}
+
+.userbar.separator.right {
+  float: right;
 }
 
 .userbar.page {
@@ -84,14 +91,14 @@
   font-weight: bold;
 }
 
-.userbar.page-selected{
+.userbar.page-selected {
   float: left;
   padding: 9px 7px 11px 7px;
   font-weight: bold;
   background-color: #3e5192;
 }
 
-.userbar.page:hover{
+.userbar.page:hover {
   background-color: #3e5192;
   border-radius: 2px;
 }
