@@ -1,0 +1,7 @@
+<a href="/ingredients/<%= ingr.id %>" class="list-group-item have ingr-a">
+  <img src="<%= ingr.img %>" alt="<%= ingr.name %>" class="ingr-img"/>
+  <h4 class="list-group-item-heading ingr-name"><%= ingr.name %></h4>
+  <input type="checkbox" name="<%= ingr.id %>" class="ingr-chbox"
+         <%= ingr.have ? 'checked' : nil %>
+         onchange="check(this, '<%= ingr.id %>', '<%= store_path(ingr.id) %>')"/>
+</a>

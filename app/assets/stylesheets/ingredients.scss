@@ -2,20 +2,119 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-textarea.ingredient-name {
+// - ingredients.index -------------------------------------
+
+.ingr-index.page {
+  background-color: #fff;
+  padding: 30px;
+  margin: 0 15% 0;
+}
+
+.ingr-index.new{
+  height: 120px;
+}
+
+.ingr-index.new-img{
+  float: left;
+  width: 100px;
+  height: 100px;
+}
+
+// - ingredient.show ---------------------------------------
+
+.ingr-show.page {
+  background-color: #fff;
+  margin: 0 15% 0;
+}
+
+.ingr-show.header {
+  font-size: 30px;
+  padding: 80px 10px 10px 20px;
+  color: white;
+  background-color: #378bc1;
+}
+
+.ingr-show.ingredient {
+  padding: 10px 20px 20px 20px;
+  position: relative;
+  bottom: 80px;
+}
+
+.ingr-show.ingr-img {
+  width: 100px;
+  height: 100px;
+  float: left;
+  border: 4px solid #f2f2f2;
+  border-radius: 1px;
+}
+
+.ingr-show.ingr-name {
+  float: left;
+  padding: 40px 0 0 10px;
+  color: white;
+}
+
+.ingr-show.ingr-desc {
+  padding: 0 20px 20px;
+  clear: both;
+
+  p {
+    margin: 0 20% 0 0;
+  }
+}
+
+.ingr-show.btn-group {
+  padding: 0 20px 20px 20px;
+}
+
+// - ingredient.form ---------------------------------------
+
+.ingr-form.ingredient {
+  padding: 10px 20px 20px 20px;
+}
+
+.ingr-form.img {
+  width: 100px;
+  height: 100px;
+  float: left;
+}
+
+.ingr-form.ingr-front {
+  padding: 25px 0 0 10px;
+  float: left;
+}
+
+.ingr-form.line-textarea {
   display: block;
   font-size: 20px;
+  padding: 5px;
   resize: none;
 }
 
-textarea.ingredient-img {
-  display: block;
-  font-size: 20px;
+.ingr-form.ingr-desc {
+  padding: 20px;
+  clear: both;
+}
+
+.ingr-form.big-textarea {
+  margin: 0 20% 0 0;
   resize: none;
 }
 
-textarea.ingredient-desc {
-  margin: 0% 20% 0% 0%;
-  align: left;
-  resize: none;
+.ingr-form.btn-group {
+  padding: 0 20px 20px 20px
+}
+
+// - ingredient.new & edit ---------------------------------
+
+.ingr-edit.ingredient, .ingr-new.ingredient {
+  background-color: #fff;
+  margin: 0 15% 0
+}
+
+.ingr-edit.header, .ingr-new.header {
+  font-size: 30px;
+  padding: 30px 0 10px 20px;
+  color: white;
+  background-color: #378bc1;
 }

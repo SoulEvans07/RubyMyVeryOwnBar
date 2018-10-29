@@ -2,39 +2,30 @@
   <%= render 'layouts/userbar', user: @user %>
   <%#= hidden_field :authenticity_token, :value => form_authenticity_token %>
 <% end %>
-<div style="background-color:#fff">
+<div class="ingr-index page">
+  <div id="ingredientList" class="tab-pane fade-in fade in active">
+    <div class="list-group">
+      <% @ingredients.each do |ingr| %>
+        <%= render 'ingredients/ingr-have', ingr: ingr %>
+      <% end %>
 
-  <div class="tab-content" style="padding: 30px 15%;">
-    <div id="ingredientList" class="tab-pane fade-in fade in active">
-      <div class="list-group">
-        <% @ingredients.each do |ingr| %>
-          <a href="/ingredients/<%= ingr.id %>" class="list-group-item have" style="height:120px">
-            <img src="<%= ingr.img %>" alt="<%= ingr.name %>" width="100px" height="100px" style="float:left"/>
-            <h4 class="list-group-item-heading" style="float:left; padding: 40px 0px 0px 10px;"><%= ingr.name %></h4>
-            <input type="checkbox" name="<%= ingr.id %>"
-                   <%= ingr.have ? 'checked' : nil %>
-                   style="padding: 50px 50px 50px 50px; float:right;"
-                   onchange="check(this, '<%= ingr.id %>', '<%= store_path(ingr.id) %>')" />
-          </a>
-        <% end %>
-
-        <a href="/ingredients/new" class="list-group-item" style="height:120px">
-          <img src="/imgs/plus.png" alt="plus" width="100px" height="100px" style="float:left"/>
-        </a>
-      </div>
+      <a href="/ingredients/new" class="list-group-item ingr-index new" >
+        <img src="/imgs/plus.png" alt="plus" class="ingr-index new-img"/>
+      </a>
     </div>
   </div>
 </div>
 <script>
-    $(".have").click(function(e) {
+    $(".have").click(function (e) {
         if (e.target.tagName === "INPUT") {
             e.preventDefault();
 
-            var cbox = $("input[type='checkbox'][name='"+e.target.name+"']");
+            var cbox = $("input[type='checkbox'][name='" + e.target.name + "']");
             cbox.prop('checked', cbox.checked);
             cbox.change();
         }
     });
+
     function check(cb, id, path) {
         $.ajax({
             type: 'POST',
