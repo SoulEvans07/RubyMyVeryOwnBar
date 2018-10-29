@@ -2,16 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-textarea.cocktail-name {
-  display: block;
-  font-size: 20px;
-  resize: none;
-}
-
-textarea.cocktail-img {
-
-}
-
 // - cocktail.show ---------------------------------------
 
 .ct-show.page {
@@ -105,8 +95,13 @@ textarea.cocktail-img {
   resize: none;
 }
 
+.ct-form.ct-ingrs {
+  padding: 20px;
+  float: none;
+}
+
 .ct-form.btn-group {
-  padding: 0px 20px 20px 20px
+  padding: 0 20px 20px 20px
 }
 
 // - cocktail.new & edit ---------------------------------

@@ -20,18 +20,18 @@
 
   </div>
 
-  <div style="padding: 20px; float: none; clear:both">
+  <div class="ct-form ct-desc">
     <h4>Description</h4>
     <%= form.text_area :description, class: 'ct-form big-textarea', rows: '5', cols: '100' %>
   </div>
 
-  <div style="padding: 20px;">
+  <div class="ct-form ct-recipe">
     <h4>Recipe</h4>
     <%= form.text_area :recipe, class: 'ct-form big-textarea', rows: '5', cols: '100' %>
   </div>
 
 
-  <div style="padding: 20px; float:none">
+  <div class="ct-form ct-ingrs">
     <h4>Ingredients</h4>
     <div class="list-group">
       <% Ingredient.all.each do |ingr| %>
