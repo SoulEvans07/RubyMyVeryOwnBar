@@ -1,14 +1,15 @@
 <%= render 'layouts/userbar', user: @user %>
 
-<div class="show profile">
-  <img src="<%= @user.img %>" class="show profile-picture">
-  <br>
-  <strong>Name:</strong>
-  <%= @user.name %>
-  <br>
-  <strong>Email:</strong>
-  <%= @user.email %>
-
-  <%#= link_to 'Edit', edit_profile_path(@user) %>
-  <%#= link_to 'Back', cocktails_path %>
+<div class="user-show profile">
+  <div class="user-show header"></div>
+  <div class="user-show statistics">
+    <div class="user-show statistic-element-first"></div>
+    <div class="user-show statistic-element-second"><b><%= @user.cocktails.length %></b> cocktails</div>
+    <div class="user-show statistic-element"><b><%= Ingredient.all.length %></b> ingredients</div>
+  </div>
+  <div class="user-show user">
+    <img src="<%= @user.img %>" class="user-show profile-picture">
+    <h3 class="user-show username"><%= @user.name %> (<%= @user.email %>)</h3>
+  </div>
+<!-- TODO: list of shared cocktails-->
 </div>
