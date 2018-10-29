@@ -18,19 +18,14 @@
 
   <div class="userbar logout"><%= link_to "Logout", logout_path, class: 'userbar profile-link' %></div>
   <div class="userbar separator right">|</div>
-  <div class="userbar notifs">
-    <a href="<%= profile_path(user) %>" class="userbar profile-link">
-      <div class="userbar notif-highlight <%= user.cocktails.length > 0 ? 'notif-red' : nil %>">
-        <%= user.cocktails.length %>
-        <img src="/imgs/bell.png" class="userbar notif-bell">
-      </div>
-    </a>
-  </div>
-  <div class="userbar separator right">|</div>
   <a href="<%= profile_path(user) %>" class="userbar profile-link">
     <div class="userbar profile">
       <img src="<%= user.img %>" class="userbar profile-picture">
       <span class="userbar username"><%= user.name %></span>
+      <div class="userbar notif-highlight <%= user.cocktails.length > 0 ? 'notif-red' : nil %>">
+        <%= user.cocktails.length %>
+        <img src="/imgs/bell.png" class="userbar notif-bell">
+      </div>
     </div>
   </a>
 </div>
