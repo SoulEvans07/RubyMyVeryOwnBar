@@ -100,9 +100,15 @@ class IngredientsController < ApplicationController
 
   def set_static_list
     @static_ingredients = []
-    @static_ingredients << Ingredient.new(id: -1, name: "Static Ingredient 1", img: "/imgs/ingredient.jpeg", have: true)
-    @static_ingredients << Ingredient.new(id: -2, name: "Static Ingredient 2", img: "/imgs/ingredient.jpeg", have: true)
-    @static_ingredients << Ingredient.new(id: -3, name: "Static Ingredient 3", img: "/imgs/ingredient.jpeg")
+    @static_ingredients << Ingredient.new(id: -1, name: "Static Ingredient 1",
+                                          img: "/imgs/ingredient.jpeg", have: true,
+                                          description: "tremplate description")
+    @static_ingredients << Ingredient.new(id: -2, name: "Static Ingredient 2",
+                                          img: "/imgs/ingredient.jpeg", have: true,
+                                          description: "tremplate description")
+    @static_ingredients << Ingredient.new(id: -3, name: "Static Ingredient 3",
+                                          img: "/imgs/ingredient.jpeg",
+                                          description: "tremplate description")
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

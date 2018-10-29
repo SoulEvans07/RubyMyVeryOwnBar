@@ -111,18 +111,26 @@ class CocktailsController < ApplicationController
 
   def set_static_list
     @static_user = User.new(id: -1)
+    @static_ingr = Ingredient.new(id: -1, name: "Static Cocktail Ingredient 1",
+                                  img: "/imgs/ingredient.jpeg", have: true,
+                                  description: "tremplate description")
     @static_cocktails = []
     @static_cocktails <<
         Cocktail.new(id: -1, name: "Static Editable Cocktail 1",
                      description: "Only editable by the user with id 1",
+                     recipe: "template recipe",
+                     ingredients: [@static_ingr],
                      img: "/imgs/glass.jpg", users: [User.first])
     @static_cocktails <<
         Cocktail.new(id: -2, name: "Static Shared Cocktail",
                      description: "Owned by a static user, your user can't edit it.",
+                     recipe: "template recipe",
+                     ingredients: [@static_ingr],
                      img: "/imgs/glass.jpg", users: [@static_user])
     @static_cocktails <<
         Cocktail.new(id: -3, name: "Static Editable Cocktail 2",
                      description: "Only editable by the user with id 1",
+                     recipe: "template recipe",
                      img: "/imgs/glass.jpg", users: [User.first])
   end
 
