@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   match 'sessions/create', to: 'sessions#create', via: :post, as: 'login'
   match 'sessions/destroy', to: 'sessions#destroy', via: [:delete, :get], as: 'logout'
 
-  get 'users', to: 'users#index', as: 'users'
+  # users shouldn't be accessible
+  # get 'users', to: 'users#index', as: 'users'
 
   get 'users/new', to: 'users#new', as: 'register'
   post 'users', to: 'users#create', as: 'user'
