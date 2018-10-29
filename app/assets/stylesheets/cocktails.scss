@@ -2,6 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// - cocktails.index -------------------------------------
+
+.ct-index.page {
+  background-color: #fff;
+  padding: 30px;
+  margin: 0 15% 0;
+}
+
+.ct-index.new{
+  height: 120px;
+}
+
+.ct-index.new-img{
+  float: left;
+  width: 100px;
+  height: 100px;
+}
+
 // - cocktail.show ---------------------------------------
 
 .ct-show.page {
@@ -56,6 +74,10 @@
 .ct-show.ct-ingrs {
   padding: 20px;
   float: none;
+}
+
+.ct-show.btn-group {
+  padding: 0 20px 20px 20px;
 }
 
 // - cocktail.form ---------------------------------------

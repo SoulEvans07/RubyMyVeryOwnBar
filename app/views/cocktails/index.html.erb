@@ -1,22 +1,13 @@
 <%= render 'layouts/userbar', user: @user %>
-<div class="tab-content" style="margin: 0 15%; padding: 30px; background-color:#fff;">
+<div class="ct-index page">
   <div id="cocktailList" class="tab-pane fade-in fade in active">
     <div class="list-group">
       <% @cocktails.each do |ct| %>
-        <a href="cocktails/<%= ct.id %>" class="list-group-item" style="height:120px">
-          <img src="<%= ct.img %>" alt="<%= ct.name %>" width="100px" height="100px" style="float:left"/>
-          <div class="list-group-item-heading"
-               style="float:left; padding: 30px 0px 0px 10px;">
-            <h4><%= ct.name %></h4>
-          </div>
-          <input type="button" value="SHARE" class="share"
-                 style="float:right;"
-                 onclick="share_it(<%= ct.id %>, '<%= share_path(ct.id) %>')">
-        </a>
+        <%= render 'cocktails/cocktail', ct: ct %>
       <% end %>
 
-      <a href="/cocktails/new" class="list-group-item" style="height:120px">
-        <img src="/imgs/plus.png" alt="plus" width="100px" height="100px" style="float:left"/>
+      <a href="/cocktails/new" class="list-group-item ct-index new">
+        <img src="/imgs/plus.png" alt="plus" class="ct-index new-img"/>
       </a>
     </div>
   </div>

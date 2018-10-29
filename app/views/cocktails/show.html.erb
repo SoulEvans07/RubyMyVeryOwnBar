@@ -28,7 +28,7 @@
     </div>
   </div>
 
-  <div class="btn-group btn-group-justified" role="group" style="padding: 0px 20px 20px 20px">
+  <div class="ct-show btn-group btn-group-justified" role="group">
     <!-- TODO: if not owner, remove Edit and Delete buttons -->
     <% if @cocktail.users.first.id == session[:user] %>
       <div class="btn-group" role="group">
