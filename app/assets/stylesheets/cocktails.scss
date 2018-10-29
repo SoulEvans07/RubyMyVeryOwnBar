@@ -14,14 +14,71 @@ textarea.cocktail-img {
   resize: none;
 }
 
-textarea.cocktail-desc {
-  margin: 0% 20% 0% 0%;
-  align: left;
+// - cocktail.show ---------------------------------------
+
+.ct-show.page {
+  background-color: #fff;
+  margin: 0 15% 0;
+}
+
+.ct-show.header {
+  font-size: 30px;
+  padding: 80px 10px 10px 20px;
+  color: white;
+  background-color: #378bc1;
+}
+
+.ct-show.cocktail {
+  padding: 10px 20px 20px 20px;
+  position: relative;
+  bottom: 80px;
+}
+
+.ct-show.ct-img {
+  width: 100px;
+  height: 100px;
+  float: left;
+  border: 4px solid #f2f2f2;
+  border-radius: 1px;
+}
+
+.ct-show.ct-name {
+  float: left;
+  padding: 40px 0 0 10px;
+  color: white;
+}
+
+.ct-show.ct-desc {
+  padding: 0 20px 0;
+  clear: both;
+
+  p {
+    margin: 0 20% 0 0;
+  }
+}
+
+.ct-show.ct-recipe {
+  padding: 20px;
+
+  p {
+    margin: 0 20% 0 0;
+  }
+}
+
+.ct-show.ct-ingrs {
+  padding: 20px;
+  float: none;
+}
+
+// - cocktail.edit ---------------------------------------
+
+.ct-edit.line-textarea {
+  display: block;
+  font-size: 20px;
   resize: none;
 }
 
-textarea.cocktail-recipe {
-  margin: 0% 20% 0% 0%;
-  align: left;
+.ct-edit.big-textarea {
+  margin: 0 20% 0 0;
   resize: none;
 }

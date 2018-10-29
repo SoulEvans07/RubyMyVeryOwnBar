@@ -1,32 +1,29 @@
 <% if logged_in? %>
   <%= render 'layouts/userbar', user: @user %>
 <% end %>
-<div style="background-color:#fff; margin: 0 15% 0">
-  <div id="header2" style="align: justify; font-size: 30px; padding: 80px 10px 10px 20px; color: white; background-color:#378bc1"></div>
+<div class="ct-show page">
+  <div class="ct-show header"></div>
 
-  <div style="padding: 10px 20px 20px 20px; position: relative; bottom: 80px">
-    <img src="<%= @cocktail.img %>" alt="<%= @cocktail.name %>" width="100px" height="100px" style="float:left; border: 4px solid #f2f2f2; border-radius: 1px"/>
-    <h4 id="header4" class="list-group-item-heading" style="float:left; padding: 40px 0px 0px 10px; color: white"><%= @cocktail.name %></h4>
+  <div class="ct-show cocktail">
+    <img src="<%= @cocktail.img %>" alt="<%= @cocktail.name %>" class="ct-show ct-img"/>
+    <h4 class="list-group-item-heading ct-show ct-name"><%= @cocktail.name %></h4>
   </div>
 
-  <div style="padding: 0 20px; float: none; clear:both">
+  <div class="ct-show ct-desc">
     <h4>Description</h4>
-    <p style="margin: 0% 20% 0% 0%; align: left"><%= @cocktail.description %></p>
+    <p><%= @cocktail.description %></p>
   </div>
 
-  <div style="padding: 20px;">
+  <div class="ct-show ct-recipe">
     <h4>Recipe</h4>
-    <p style="margin: 0% 20% 0% 0%; align: left"><%= @cocktail.recipe %></p>
+    <p><%= @cocktail.recipe %></p>
   </div>
 
-  <div style="padding: 20px; float:none">
+  <div class="ct-show ct-ingrs">
     <h4>Ingredients</h4>
     <div class="list-group">
       <% @cocktail.ingredients.each do |ingr| %>
-        <a href="/ingredients/<%= ingr.id %>" class="list-group-item" style="height:120px">
-          <img src="<%= ingr.img %>" alt="<%= ingr.name %>" width="100px" height="100px" style="float:left"/>
-          <h4 class="list-group-item-heading" style="float:left; padding: 40px 0px 0px 10px;"><%= ingr.name %></h4>
-        </a>
+        <%= render 'ingredients/ingredient', ingr: ingr %>
       <% end %>
     </div>
   </div>
@@ -38,7 +35,7 @@
         <button class="btn btn-info" OnClick="location.href='/cocktails/<%= @cocktail.id %>/edit'">Edit</button>
       </div>
       <div class="btn-group" role="group">
-        <%= link_to 'Delete', @cocktail, method: :delete, class: 'btn btn-danger', style: 'color: white', data: {confirm: 'Do you want to remove ' + @cocktail.name + '. This action can not be undone.'} %>
+        <%= link_to 'Delete', @cocktail, method: :delete, class: 'btn btn-danger', data: {confirm: 'Do you want to remove ' + @cocktail.name + '. This action can not be undone.'} %>
       </div>
     <% end %>
     <div class="btn-group" role="group">
