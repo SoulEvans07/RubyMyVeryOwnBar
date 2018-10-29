@@ -1,3 +1,6 @@
+<%= render 'layouts/userbar', user: @user %>
+
+<div class="show-profile">
 <p>
   <img src="<%= @user.img %>" style="width: 50px; height: 50px">
 </p>
@@ -19,3 +22,4 @@
 
 <%= link_to 'Edit', edit_profile_path(@user) %> |
 <%= link_to 'Back', cocktails_path %>
+</div>

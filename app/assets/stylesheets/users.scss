@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+a {
+  color: #2e6da4;
+}
+
 .title {
   font-family: 'Condiment', cursive;
   font-size: 30px;
@@ -60,6 +64,11 @@
 
 }
 
+.register-text {
+  font-weight: bold;
+  color: #8d8d8d;
+}
+
 .register-field-box, .forgotten-field-box {
   margin: 10px 0 15px 0;
 }
@@ -92,10 +101,11 @@
   color: #999;
 }
 
-a {
-  color: #2e6da4;
-}
-
 .lock {
   width: 40%;
+}
+
+.show-img {
+  width: 50px;
+  height: 50px;
 }

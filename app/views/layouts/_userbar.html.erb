@@ -1,22 +1,22 @@
 <% content_for :head do %>
   <link rel="stylesheet" href="/assets/userbar.css.scss">
 <% end %>
-<div class="user-bar" style="height: 38px">
-  <div class="logout"><%= link_to "Logout", logout_path, class: 'profile-link'%></div>
-  <div class="separator">|</div>
-  <div class="notifs">
-    <a href="<%= profile_path(user) %>" class="profile-link">
-      <div class="notif-highlight <%= user.cocktails.length > 0 ? 'notif-red' : nil %>">
+<div class="userbar user-bar" style="height: 38px">
+  <div class="userbar logout"><%= link_to "Logout", logout_path, class: 'userbar profile-link'%></div>
+  <div class="userbar separator">|</div>
+  <div class="userbar notifs">
+    <a href="<%= profile_path(user) %>" class="userbar profile-link">
+      <div class="userbar notif-highlight <%= user.cocktails.length > 0 ? 'notif-red' : nil %>">
         <%= user.cocktails.length %>
         <img src="/imgs/bell.png" style="height: 12px">
       </div>
     </a>
   </div>
-  <div class="separator">|</div>
-  <a href="<%= profile_path(user) %>" class="profile-link">
-    <div class="profile">
-      <img src="<%= user.img %>" class="profile-picture">
-      <span class="username"><%= user.name %></span>
+  <div class="userbar separator">|</div>
+  <a href="<%= profile_path(user) %>" class="userbar profile-link">
+    <div class="userbar profile">
+      <img src="<%= user.img %>" class="userbar profile-picture">
+      <span class="userbar username"><%= user.name %></span>
     </div>
   </a>
 </div>
