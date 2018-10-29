@@ -32,12 +32,15 @@
   </div>
 
   <div class="btn-group btn-group-justified" role="group" style="padding: 0px 20px 20px 20px">
-    <div class="btn-group" role="group">
-      <button class="btn btn-info" OnClick="location.href='/cocktails/<%= @cocktail.id %>/edit'">Edit</button>
-    </div>
-    <div class="btn-group" role="group">
-      <%= link_to 'Delete', @cocktail, method: :delete, class: 'btn btn-danger', style: 'color: white', data: {confirm: 'Do you want to remove ' + @cocktail.name + '. This action can not be undone.'} %>
-    </div>
+    <!-- TODO: if not owner, remove Edit and Delete buttons -->
+    <% if @cocktail.users.first.id == session[:user] %>
+      <div class="btn-group" role="group">
+        <button class="btn btn-info" OnClick="location.href='/cocktails/<%= @cocktail.id %>/edit'">Edit</button>
+      </div>
+      <div class="btn-group" role="group">
+        <%= link_to 'Delete', @cocktail, method: :delete, class: 'btn btn-danger', style: 'color: white', data: {confirm: 'Do you want to remove ' + @cocktail.name + '. This action can not be undone.'} %>
+      </div>
+    <% end %>
     <div class="btn-group" role="group">
       <button class="btn btn-warning" OnClick="location.href='/cocktails'">Back</button>
     </div>
