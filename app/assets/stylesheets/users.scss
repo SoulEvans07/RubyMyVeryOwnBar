@@ -43,7 +43,7 @@ a {
   border-radius: 2px;
 }
 
-.register-btn, .forgotten-btn{
+.register-btn, .forgotten-btn {
   width: 80%;
   background-color: #337ab7;
   color: white;
@@ -153,7 +153,7 @@ a {
   flex-direction: row;
 }
 
-.save-btn{
+.save-btn {
   width: 50%;
   background-color: #337ab7;
   color: white;
@@ -203,22 +203,32 @@ a {
   border-top: none;
 }
 
-.user-show.statistic-element {
-  display: inline-block;
-  padding: 10px 10px;
-  border-right: 1px solid #e2e2e2;
-}
-
-.user-show.statistic-element-first {
+.user-show.stat-padding {
   font-weight: bold;
   display: inline-block;
   padding: 10px 15% 10px 0;
 }
 
-.user-show.statistic-element-second {
+.user-show.stat-cocktails {
   display: inline-block;
   padding: 10px 10px;
   border-right: 1px solid #e2e2e2;
   border-left: 1px solid #e2e2e2;
 }
 
+.user-show.stat-ingredients {
+  display: inline-block;
+  padding: 10px 10px;
+  margin: 0;
+}
+
+.user-show.edit-btn {
+  display: inline-block;
+  padding: 10px 10px;
+  border-right: 1px solid #e2e2e2;
+  border-left: 1px solid #e2e2e2;
+}
+
+.user-show.edit-btn:hover {
+  background-color: #efefef;
+}

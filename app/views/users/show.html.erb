@@ -3,11 +3,11 @@
 <div class="user-show profile">
   <div class="user-show header"></div>
   <div class="user-show statistics">
-    <div class="user-show statistic-element-first"></div>
-    <div class="user-show statistic-element-second"><b><%= @user.cocktails.length %></b> cocktails</div>
-    <div class="user-show statistic-element"><b><%= Ingredient.all.length %></b> ingredients</div>
-    <a href=<%= edit_profile_path(@user) %>>
-      <div class="user-show statistic-element"><b>Edit</b></div>
+    <div class="user-show stat-padding"></div>
+    <div class="user-show stat-cocktails"><b><%= @user.cocktails.length %></b> cocktails</div>
+    <div class="user-show stat-ingredients"><b><%= Ingredient.all.length %></b> ingredients</div>
+    <a href="<%= edit_profile_path(@user) %>">
+      <div class="user-show edit-btn"><b>Edit</b></div>
     </a>
   </div>
   <div class="user-show user">
