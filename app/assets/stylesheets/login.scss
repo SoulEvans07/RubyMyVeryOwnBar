@@ -2,14 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.title {
+.login.login-title {
   font-family: 'Condiment', cursive;
   font-size: 30px;
   width: 80%;
   margin: 10px 0 10px 0;
 }
 
-.login-box {
+.login.login-box {
   background-color: white;
   margin: 30px auto auto;
   padding: 20px;
@@ -19,11 +19,11 @@
   text-align: center;
 }
 
-.login-field-box {
+.login.login-field-box {
   margin: 10px 0 15px 0;
 }
 
-.login-field {
+.login.login-field {
   width: 80%;
   padding: 7px;
   margin: 5px;
@@ -32,7 +32,7 @@
   border-radius: 2px;
 }
 
-.login-btn {
+.login.login-btn {
   width: 80%;
   background-color: #337ab7;
   color: white;
@@ -41,6 +41,6 @@
   border-radius: 2px;
 }
 
-.link {
+.login.link {
   color: #2e6da4;
 }
