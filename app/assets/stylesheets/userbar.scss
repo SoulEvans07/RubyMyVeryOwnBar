@@ -78,13 +78,20 @@
   margin: 2px;
 }
 
-.userbar.cocktails {
+.userbar.page {
   float: left;
   padding: 9px 7px 11px 7px;
   font-weight: bold;
 }
 
-.userbar.cocktails:hover{
+.userbar.page-selected{
+  float: left;
+  padding: 9px 7px 11px 7px;
+  font-weight: bold;
+  background-color: #3e5192;
+}
+
+.userbar.page:hover{
   background-color: #3e5192;
   border-radius: 2px;
 }

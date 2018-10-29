@@ -2,28 +2,30 @@
   <link rel="stylesheet" href="/assets/userbar.css.scss">
 <% end %>
 <div class="userbar user-bar" style="height: 38px">
-  <a href="<%= cocktails_path %>" class="userbar cocktails">
+  <a href="<%= cocktails_path %>" class="userbar
+    <%= current_page?(cocktails_path) ? 'page-selected' : 'page' %>">
     <div class="userbar profile-link">Cocktails</div>
   </a>
-  <a href="<%= ingredients_path %>" class="userbar cocktails">
-    <div class="userbar profile-link">Ingredients</div>
-  </a>
+    <a href="<%= ingredients_path %>" class="userbar \
+  <%= current_page?(ingredients_path) ? 'page-selected' : 'page' %>">
+      <div class="userbar profile-link">Ingredients</div>
+    </a>
 
-  <div class="userbar logout"><%= link_to "Logout", logout_path, class: 'userbar profile-link' %></div>
-  <div class="userbar separator">|</div>
-  <div class="userbar notifs">
+    <div class="userbar logout"><%= link_to "Logout", logout_path, class: 'userbar profile-link' %></div>
+    <div class="userbar separator">|</div>
+    <div class="userbar notifs">
+      <a href="<%= profile_path(user) %>" class="userbar profile-link">
+        <div class="userbar notif-highlight <%= user.cocktails.length > 0 ? 'notif-red' : nil %>">
+          <%= user.cocktails.length %>
+          <img src="/imgs/bell.png" style="height: 12px">
+        </div>
+      </a>
+    </div>
+    <div class="userbar separator">|</div>
     <a href="<%= profile_path(user) %>" class="userbar profile-link">
-      <div class="userbar notif-highlight <%= user.cocktails.length > 0 ? 'notif-red' : nil %>">
-        <%= user.cocktails.length %>
-        <img src="/imgs/bell.png" style="height: 12px">
+      <div class="userbar profile">
+        <img src="<%= user.img %>" class="userbar profile-picture">
+        <span class="userbar username"><%= user.name %></span>
       </div>
     </a>
   </div>
-  <div class="userbar separator">|</div>
-  <a href="<%= profile_path(user) %>" class="userbar profile-link">
-    <div class="userbar profile">
-      <img src="<%= user.img %>" class="userbar profile-picture">
-      <span class="userbar username"><%= user.name %></span>
-    </div>
-  </a>
-</div>
