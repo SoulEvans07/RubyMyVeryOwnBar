@@ -1,6 +1,6 @@
 <div class="forgotten-box">
   <img src="/imgs/lock.png" class="lock"><br>
-  <div class="forgotten-title">Trouble Logging In?</div>
+  <div class="forgotten-desc">Trouble Logging In?</div>
   <fieldset>
     <span class="forgotten-expl">Enter your email and we'll send you a link to get back into your account.</span>
     <%= form_tag '/users/recover', method: :post do %>
@@ -11,6 +11,6 @@
     <% end %>
   </fieldset>
 </div>
-<div class="back-box">
-  <%= link_to 'Back to Login', welcome_path, class: 'back-btn' %>
+<div class="forgotten back-box">
+  <%= link_to 'Back to Login', welcome_path, class: 'forgotten back-btn' %>
 </div>

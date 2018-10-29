@@ -6,12 +6,12 @@ a {
   color: #2e6da4;
 }
 
-.title {
-  font-family: 'Condiment', cursive;
-  font-size: 30px;
+.title-img {
   width: 80%;
   margin: 10px 0 10px 0;
 }
+
+// - register ----------------------------------------
 
 .register-box {
   background-color: white;
@@ -23,51 +23,12 @@ a {
   text-align: center;
 }
 
-.forgotten-box {
-  background-color: white;
-  margin: 30px auto auto;
-  padding: 20px;
-  width: 25%;
-  border: solid 1px #bebebe;
-  border-bottom: none;
-  border-radius: 3px 3px 0 0;
-  text-align: center;
-}
-
-.back-box {
-  margin: 0 auto auto;
-  background-color: white;
-  border: solid 1px #bebebe;
-  border-top: solid 1px #dfdfdf;
-  border-radius: 0 0 3px 3px;
-  width: 25%;
-  text-align: center;
-  padding: 10px;
-}
-
-.back-box:hover {
-  background-color: #f2f2f2;
-}
-
-.back-btn {
-  width: 100%;
-  margin: 0 auto auto;
-  text-align: center;
-  padding: 10px 33%;
-  color: #2E2F30;
-  font-weight: bold;
-}
-
-.back-btn:hover {
-  text-decoration: none;
-  color: #2E2F30;
-
-}
-
 .register-text {
   font-weight: bold;
   color: #8d8d8d;
 }
+
+// - register & forgotten ----------------------------
 
 .register-field-box, .forgotten-field-box {
   margin: 10px 0 15px 0;
@@ -91,7 +52,49 @@ a {
   border-radius: 2px;
 }
 
-.forgotten-title {
+// - forgotten ---------------------------------------
+
+.forgotten.back-box {
+  margin: 0 auto auto;
+  background-color: white;
+  border: solid 1px #bebebe;
+  border-top: solid 1px #dfdfdf;
+  border-radius: 0 0 3px 3px;
+  width: 25%;
+  text-align: center;
+  padding: 10px;
+}
+
+.forgotten.back-box:hover {
+  background-color: #f2f2f2;
+}
+
+.forgotten.back-btn {
+  width: 100%;
+  margin: 0 auto auto;
+  text-align: center;
+  padding: 10px 33%;
+  color: #2E2F30;
+  font-weight: bold;
+}
+
+.forgotten.back-btn:hover {
+  text-decoration: none;
+  color: #2E2F30;
+}
+
+.forgotten-box {
+  background-color: white;
+  margin: 30px auto auto;
+  padding: 20px;
+  width: 25%;
+  border: solid 1px #bebebe;
+  border-bottom: none;
+  border-radius: 3px 3px 0 0;
+  text-align: center;
+}
+
+.forgotten-desc {
   margin: 20px 0;
   font-size: large;
   font-weight: bold;
@@ -101,11 +104,23 @@ a {
   color: #999;
 }
 
-.lock {
+.forgotten.lock {
   width: 40%;
 }
 
-.show-img {
+// - user.show ---------------------------------------
+
+.show.profile {
+  width: 60%;
+  margin: 30px auto;
+  display: block;
+}
+
+.show.profile-picture {
   width: 50px;
   height: 50px;
+}
+
+.show.username{
+
 }

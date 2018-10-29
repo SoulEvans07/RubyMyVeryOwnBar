@@ -65,7 +65,7 @@
   background-color: #d70000;
 }
 
-.userbar.notif-highlight.notif-red:hover{
+.userbar.notif-highlight.notif-red:hover {
   background-color: #ef0000;
 }
 
@@ -77,4 +77,16 @@
   float: right;
   padding: 7px;
   margin: 2px;
+}
+
+.userbar.cocktails {
+  float: left;
+  padding: 7px 5px 9px 5px;
+  margin: 2px 15px 2px 2px;
+  font-weight: bold;
+}
+
+.userbar.cocktails:hover{
+  background-color: #3e5192;
+  border-radius: 2px;
 }

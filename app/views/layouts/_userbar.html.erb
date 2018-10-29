@@ -2,7 +2,14 @@
   <link rel="stylesheet" href="/assets/userbar.css.scss">
 <% end %>
 <div class="userbar user-bar" style="height: 38px">
-  <div class="userbar logout"><%= link_to "Logout", logout_path, class: 'userbar profile-link'%></div>
+  <a href="<%= cocktails_path %>" class="userbar cocktails">
+    <div class="userbar profile-link">Cocktails</div>
+  </a>
+  <a href="<%= ingredients_path %>" class="userbar cocktails">
+    <div class="userbar profile-link">Ingredients</div>
+  </a>
+
+  <div class="userbar logout"><%= link_to "Logout", logout_path, class: 'userbar profile-link' %></div>
   <div class="userbar separator">|</div>
   <div class="userbar notifs">
     <a href="<%= profile_path(user) %>" class="userbar profile-link">
