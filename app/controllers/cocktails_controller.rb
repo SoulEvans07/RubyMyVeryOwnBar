@@ -110,10 +110,20 @@ class CocktailsController < ApplicationController
   end
 
   def set_static_list
+    @static_user = User.new(id: -1)
     @static_cocktails = []
-    @static_cocktails << Cocktail.new(id: -1, name: "Static Cocktail 1", img: "/imgs/glass.jpg")
-    @static_cocktails << Cocktail.new(id: -2, name: "Static Cocktail 2", img: "/imgs/glass.jpg")
-    @static_cocktails << Cocktail.new(id: -3, name: "Static Cocktail 3", img: "/imgs/glass.jpg")
+    @static_cocktails <<
+        Cocktail.new(id: -1, name: "Static Editable Cocktail 1",
+                     description: "Only editable by the user with id 1",
+                     img: "/imgs/glass.jpg", users: [User.first])
+    @static_cocktails <<
+        Cocktail.new(id: -2, name: "Static Shared Cocktail",
+                     description: "Owned by a static user, your user can't edit it.",
+                     img: "/imgs/glass.jpg", users: [@static_user])
+    @static_cocktails <<
+        Cocktail.new(id: -3, name: "Static Editable Cocktail 2",
+                     description: "Only editable by the user with id 1",
+                     img: "/imgs/glass.jpg", users: [User.first])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
