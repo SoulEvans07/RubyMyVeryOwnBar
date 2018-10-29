@@ -22,8 +22,11 @@
 .userbar.profile:hover {
   background-color: #3e5192;
   border-radius: 2px;
-  .userbar.notif-highlight{
+  .notif-highlight{
     background-color: #31376b;
+  }
+  .notif-red{
+    background-color: #ed0000;
   }
 }
 
@@ -66,7 +69,7 @@
   vertical-align: middle;
 }
 
-.userbar.notif-red {
+.userbar.notif-highlight.notif-red {
   background-color: #d70000;
 }
 
