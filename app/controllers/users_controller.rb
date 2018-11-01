@@ -10,6 +10,12 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @user.notifications.each do |notif|
+      unless notif.seen
+        notif.seen = true
+        notif.save
+      end
+    end
   end
 
   # GET /users/new
