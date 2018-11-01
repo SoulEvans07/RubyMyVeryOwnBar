@@ -37,6 +37,7 @@ class CocktailsController < ApplicationController
   # POST /cocktails.json
   def create
     @cocktail = Cocktail.new(cocktail_params)
+    @cocktail.owner = @user
 
     respond_to do |format|
       if @cocktail.save

@@ -36,6 +36,7 @@ class IngredientsController < ApplicationController
   # POST /ingredients.json
   def create
     @ingredient = Ingredient.new(ingredient_params)
+    @ingredient.owner = @user
 
     respond_to do |format|
       if @ingredient.save

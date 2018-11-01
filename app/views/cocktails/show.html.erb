@@ -30,7 +30,7 @@
 
   <div class="ct-show btn-group btn-group-justified" role="group">
     <!-- TODO: if not owner, remove Edit and Delete buttons -->
-    <% if @cocktail.users.first.id == session[:user] %>
+    <% if @cocktail.owner == @user %>
       <div class="btn-group" role="group">
         <button class="btn btn-info" OnClick="location.href='/cocktails/<%= @cocktail.id %>/edit'">Edit</button>
       </div>
