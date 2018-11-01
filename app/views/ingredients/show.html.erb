@@ -13,7 +13,7 @@
   </div>
 
   <div class="ingr-show btn-group btn-group-justified" role="group">
-    <% if @cocktail.owner == @user %>
+    <% if @ingredient.owner == @user %>
       <div class="btn-group" role="group">
         <button class="btn btn-info" OnClick="location.href='/ingredients/<%= @ingredient.id %>/edit' ">Edit</button>
       </div>
