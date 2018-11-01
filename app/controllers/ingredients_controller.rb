@@ -10,7 +10,7 @@ class IngredientsController < ApplicationController
     @static_ingredients.each do |ingr|
       @ingredients << ingr
     end
-    Ingredient.all.each do |ingr|
+    @user.ingredients.each do |ingr|
       @ingredients << ingr
     end
   end
@@ -43,6 +43,8 @@ class IngredientsController < ApplicationController
 
     respond_to do |format|
       if @ingredient.save
+        @user.ingredients << @ingredient
+
         format.html {redirect_to @ingredient, notice: 'Ingredient was successfully created.'}
         format.json {render :show, status: :created, location: @ingredient}
       else

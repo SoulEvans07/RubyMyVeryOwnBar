@@ -5,7 +5,7 @@
   <div class="user-show statistics">
     <div class="user-show stat-padding"></div>
     <div class="user-show stat-cocktails"><b><%= @user.cocktails.length %></b> cocktails</div>
-    <div class="user-show stat-ingredients"><b><%= Ingredient.all.length %></b> ingredients</div>
+    <div class="user-show stat-ingredients"><b><%= @user.ingredients.length %></b> ingredients</div>
     <a href="<%= edit_profile_path(@user) %>">
       <div class="user-show edit-btn"><b>Edit</b></div>
     </a>
