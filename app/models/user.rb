@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_and_belongs_to_many :cocktails
   has_and_belongs_to_many :ingredients
+  has_many :notifications
   attr_accessor :password
   before_save :encrypt_password
 
@@ -31,5 +32,9 @@ class User < ApplicationRecord
 
   def authenticated?(pass)
     self.encrypted_password == User.encrypt(pass, self.salt)
+  end
+
+  def unseen_notifs
+    self.notifications.select { |notif| !notif.seen }.length
   end
 end

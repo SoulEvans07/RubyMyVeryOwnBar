@@ -1,6 +1,6 @@
 class AddImgToUsers < ActiveRecord::Migration[5.2]
   def up
-    add_column :users, :img, :string
+    add_column :users, :img, :string, :default => '/imgs/user.png'
   end
 
   def down

@@ -24,8 +24,8 @@
     <div class="userbar profile">
       <img src="<%= user.img %>" class="userbar profile-picture">
       <span class="userbar username"><%= user.name %></span>
-      <div class="userbar notif-highlight <%= user.cocktails.length > 0 ? 'notif-red' : nil %>">
-        <%= user.cocktails.length %>
+      <div class="userbar notif-highlight <%= user.unseen_notifs > 0 ? 'notif-red' : nil %>">
+        <%= user.unseen_notifs %>
         <img src="/imgs/bell.png" class="userbar notif-bell">
       </div>
     </div>

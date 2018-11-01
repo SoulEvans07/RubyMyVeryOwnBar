@@ -12,11 +12,12 @@ class CocktailsController < ApplicationController
   end
 
   def share
-    @with = User.find_by_name(params[:user])
-    logger.info(@with)
+    @to = User.find_by_name(params[:username_to])
     @ct = Cocktail.find_by_id(params[:id])
-    logger.info(@ct)
-    @with.cocktails << @ct
+    @to.cocktails << @ct
+
+    @notif = Notification.new(sender: @user.id, item: @ct.id, item_type: 0, seen: false)
+    @to.notifications << @notif
   end
 
   # GET /cocktails/1
