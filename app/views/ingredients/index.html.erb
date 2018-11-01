@@ -13,28 +13,27 @@
   </div>
 </div>
 <script>
-    $(".have").click(function (e) {
+    $(".share").click(function (e) {
         if (e.target.tagName === "INPUT") {
             e.preventDefault();
 
-            var cbox = $("input[type='checkbox'][name='" + e.target.name + "']");
-            cbox.prop('checked', cbox.checked);
-            cbox.change();
+            var btn = $("input[type='button'][name='" + e.target.name + "']");
+            btn.click();
         }
     });
 
-    function check(cb, id, path) {
+    function share_it(id, path) {
+        var username = prompt("Share with");
         $.ajax({
             type: 'POST',
             data: {
                 authenticity_token: "<%= form_authenticity_token %>",
                 id: id,
-                checked: cb.checked
+                username_to: username
             },
             dataType: 'json',
             url: path,
             success: function (res) {
-                cb.checked = !cb.checked;
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 console.log(xhr.status);

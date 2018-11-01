@@ -21,7 +21,8 @@ Rails.application.routes.draw do
 
   delete 'users/:id/destroy', to: 'users#destroy', as: 'delete_profile'
 
-  post 'cocktails/:id/share', to: 'cocktails#share', as: 'share'
+  post 'cocktails/:id/share', to: 'cocktails#share', as: 'share_cocktail'
+  post 'ingredients/:id/share', to: 'ingredients#share', as: 'share_ingredient'
 
   resources :cocktails
 

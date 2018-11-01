@@ -11,6 +11,15 @@ class IngredientsController < ApplicationController
     end
   end
 
+  def share
+    @to = User.find_by_name(params[:username_to])
+    @ingr = Ingredient.find_by_id(params[:id])
+    @to.ingredients << @ingr
+
+    @notif = Notification.new(sender: @auth_user.id, item: @ingr.id, item_type: 1, seen: false)
+    @to.notifications << @notif
+  end
+
   # GET /ingredients/1
   # GET /ingredients/1.json
   def show

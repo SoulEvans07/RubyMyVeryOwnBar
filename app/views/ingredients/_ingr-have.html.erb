@@ -4,4 +4,6 @@
   <input type="checkbox" name="<%= ingr.id %>" class="ingr-chbox"
          <%= ingr.have ? 'checked' : nil %>
          onchange="check(this, '<%= ingr.id %>', '<%= store_path(ingr.id) %>')"/>
+  <input type="button" value="SHARE" class="ingr-share"
+         onclick="share_it(<%= ingr.id %>, '<%= share_ingredient_path(ingr.id) %>')">
 </a>
