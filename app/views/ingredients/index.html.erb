@@ -1,7 +1,4 @@
-<% if logged_in? %>
-  <%= render 'layouts/userbar', user: @user %>
-  <%#= hidden_field :authenticity_token, :value => form_authenticity_token %>
-<% end %>
+<%= render 'layouts/userbar', user: @auth_user %>
 <div class="ingr-index page">
   <div id="ingredientList" class="tab-pane fade-in fade in active">
     <div class="list-group">
@@ -9,7 +6,7 @@
         <%= render 'ingredients/ingr-have', ingr: ingr %>
       <% end %>
 
-      <a href="/ingredients/new" class="list-group-item ingr-index new" >
+      <a href="/ingredients/new" class="list-group-item ingr-index new">
         <img src="/imgs/plus.png" alt="plus" class="ingr-index new-img"/>
       </a>
     </div>

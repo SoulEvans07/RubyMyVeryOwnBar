@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :check_auth
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -10,6 +11,9 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    unless @auth_user == @user
+      render(:file => File.join(Rails.root, 'public/403.html'), :status => 403, :layout => false)
+    end
     @user.notifications.each do |notif|
       unless notif.seen
         notif.seen = true
@@ -76,6 +80,17 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def check_auth
+    unless session[:user]
+      redirect_to welcome_path
+    end
+    @auth_user = User.find_by_id(session[:user])
+    # If can't find the logged in user, destroy session
+    unless @auth_user
+      redirect_to logout_path
+    end
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_user

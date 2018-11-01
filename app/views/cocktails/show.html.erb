@@ -1,5 +1,5 @@
 <% if logged_in? %>
-  <%= render 'layouts/userbar', user: @user %>
+  <%= render 'layouts/userbar', user: @auth_user %>
 <% end %>
 <div class="ct-show page">
   <div class="ct-show header"></div>
@@ -30,7 +30,7 @@
 
   <div class="ct-show btn-group btn-group-justified" role="group">
     <!-- TODO: if not owner, remove Edit and Delete buttons -->
-    <% if @cocktail.owner == @user %>
+    <% if @cocktail.owner == @auth_user %>
       <div class="btn-group" role="group">
         <button class="btn btn-info" OnClick="location.href='/cocktails/<%= @cocktail.id %>/edit'">Edit</button>
       </div>

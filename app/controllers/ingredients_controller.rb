@@ -6,7 +6,7 @@ class IngredientsController < ApplicationController
   # GET /ingredients.json
   def index
     @ingredients = []
-    @user.ingredients.each do |ingr|
+    @auth_user.ingredients.each do |ingr|
       @ingredients << ingr
     end
   end
@@ -36,11 +36,11 @@ class IngredientsController < ApplicationController
   # POST /ingredients.json
   def create
     @ingredient = Ingredient.new(ingredient_params)
-    @ingredient.owner = @user
+    @ingredient.owner = @auth_user
 
     respond_to do |format|
       if @ingredient.save
-        @user.ingredients << @ingredient
+        @auth_user.ingredients << @ingredient
 
         format.html {redirect_to @ingredient, notice: 'Ingredient was successfully created.'}
         format.json {render :show, status: :created, location: @ingredient}
@@ -81,8 +81,8 @@ class IngredientsController < ApplicationController
     unless session[:user]
       redirect_to welcome_path
     end
-    @user = User.find_by_id(session[:user])
-    unless @user
+    @auth_user = User.find_by_id(session[:user])
+    unless @auth_user
       redirect_to logout_path
     end
   end

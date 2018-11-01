@@ -6,7 +6,7 @@ class CocktailsController < ApplicationController
   # GET /cocktails.json
   def index
     @cocktails = []
-    @user.cocktails.each do |ct|
+    @auth_user.cocktails.each do |ct|
       @cocktails << ct
     end
   end
@@ -16,7 +16,7 @@ class CocktailsController < ApplicationController
     @ct = Cocktail.find_by_id(params[:id])
     @to.cocktails << @ct
 
-    @notif = Notification.new(sender: @user.id, item: @ct.id, item_type: 0, seen: false)
+    @notif = Notification.new(sender: @auth_user.id, item: @ct.id, item_type: 0, seen: false)
     @to.notifications << @notif
   end
 
@@ -38,7 +38,7 @@ class CocktailsController < ApplicationController
   # POST /cocktails.json
   def create
     @cocktail = Cocktail.new(cocktail_params)
-    @cocktail.owner = @user
+    @cocktail.owner = @auth_user
 
     respond_to do |format|
       if @cocktail.save
@@ -47,9 +47,9 @@ class CocktailsController < ApplicationController
             @cocktail.ingredients << Ingredient.find(id)
           end
         end
-        @user.cocktails << @cocktail
+        @auth_user.cocktails << @cocktail
 
-        format.html {redirect_to @cocktail, notice: 'Cocktail was successfully created for ' + @user.name + '.'}
+        format.html {redirect_to @cocktail, notice: 'Cocktail was successfully created for ' + @auth_user.name + '.'}
         format.json {render :show, status: :created, location: @cocktail}
       else
         format.html {render :new}
@@ -93,8 +93,8 @@ class CocktailsController < ApplicationController
     unless session[:user]
       redirect_to welcome_path
     end
-    @user = User.find_by_id(session[:user])
-    unless @user
+    @auth_user = User.find_by_id(session[:user])
+    unless @auth_user
       redirect_to logout_path
     end
   end
