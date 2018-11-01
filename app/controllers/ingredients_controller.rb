@@ -1,15 +1,11 @@
 class IngredientsController < ApplicationController
   before_action :check_auth
-  before_action :set_static_list
   before_action :set_ingredient, only: [:show, :edit, :have, :update, :destroy]
 
   # GET /ingredients
   # GET /ingredients.json
   def index
     @ingredients = []
-    @static_ingredients.each do |ingr|
-      @ingredients << ingr
-    end
     @user.ingredients.each do |ingr|
       @ingredients << ingr
     end
@@ -92,25 +88,7 @@ class IngredientsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_ingredient
-    if Integer(params[:id]) < 0
-      @ingredient = @static_ingredients.select {|ingr| ingr.id == Integer(params[:id])}.first
-    else
-      @ingredient = Ingredient.find(params[:id])
-    end
-
-  end
-
-  def set_static_list
-    @static_ingredients = []
-    @static_ingredients << Ingredient.new(id: -1, name: "Static Ingredient 1",
-                                          img: "/imgs/ingredient.jpeg", have: true,
-                                          description: "tremplate description")
-    @static_ingredients << Ingredient.new(id: -2, name: "Static Ingredient 2",
-                                          img: "/imgs/ingredient.jpeg", have: true,
-                                          description: "tremplate description")
-    @static_ingredients << Ingredient.new(id: -3, name: "Static Ingredient 3",
-                                          img: "/imgs/ingredient.jpeg",
-                                          description: "tremplate description")
+    @ingredient = Ingredient.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,15 +1,11 @@
 class CocktailsController < ApplicationController
   before_action :check_auth
-  before_action :set_static_list
   before_action :set_cocktail, only: [:show, :edit, :update, :destroy]
 
   # GET /cocktails
   # GET /cocktails.json
   def index
     @cocktails = []
-    @static_cocktails.each do |ct|
-      @cocktails << ct
-    end
     @user.cocktails.each do |ct|
       @cocktails << ct
     end
@@ -51,7 +47,7 @@ class CocktailsController < ApplicationController
         end
         @user.cocktails << @cocktail
 
-        format.html {redirect_to @cocktail, notice: 'Cocktail was successfully created for '+@user.name+'.'}
+        format.html {redirect_to @cocktail, notice: 'Cocktail was successfully created for ' + @user.name + '.'}
         format.json {render :show, status: :created, location: @cocktail}
       else
         format.html {render :new}
@@ -102,36 +98,7 @@ class CocktailsController < ApplicationController
   end
 
   def set_cocktail
-    if Integer(params[:id]) < 0
-      @cocktail = @static_cocktails.select {|ct| ct.id == Integer(params[:id])}.first
-    else
-      @cocktail = Cocktail.find(params[:id])
-    end
-  end
-
-  def set_static_list
-    @static_user = User.new(id: -1)
-    @static_ingr = Ingredient.new(id: -1, name: "Static Cocktail Ingredient 1",
-                                  img: "/imgs/ingredient.jpeg", have: true,
-                                  description: "tremplate description")
-    @static_cocktails = []
-    @static_cocktails <<
-        Cocktail.new(id: -1, name: "Static Editable Cocktail 1",
-                     description: "Only editable by the user with id 1",
-                     recipe: "template recipe",
-                     ingredients: [@static_ingr],
-                     img: "/imgs/glass.jpg", users: [User.first])
-    @static_cocktails <<
-        Cocktail.new(id: -2, name: "Static Shared Cocktail",
-                     description: "Owned by a static user, your user can't edit it.",
-                     recipe: "template recipe",
-                     ingredients: [@static_ingr],
-                     img: "/imgs/glass.jpg", users: [@static_user])
-    @static_cocktails <<
-        Cocktail.new(id: -3, name: "Static Editable Cocktail 2",
-                     description: "Only editable by the user with id 1",
-                     recipe: "template recipe",
-                     img: "/imgs/glass.jpg", users: [User.first])
+    @cocktail = Cocktail.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
