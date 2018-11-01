@@ -2,6 +2,10 @@
   height: 120px;
 }
 
+.ctp-a.missing{
+  background-color: #ffe0e0;
+}
+
 .ctp-img {
   float: left;
   width: 100px;
@@ -13,6 +17,10 @@
   padding: 30px 0 0 10px;
 }
 
+.ctp-missing {
+  color: #ff6464;
+}
+
 .ctp-share {
-  float:right;
+  float: right;
 }
