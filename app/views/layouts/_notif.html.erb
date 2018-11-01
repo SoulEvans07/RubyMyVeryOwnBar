@@ -1,0 +1,11 @@
+<% content_for :head do %>
+  <link rel="stylesheet" href="/assets/notif.css.scss">
+<% end %>
+<% item = notif.get_item %>
+<% sender = notif.get_sender %>
+<a href="/<%= notif.type_string %>s/<%= notif.item %>" class="list-group-item nt-a">
+  <img src="<%= item.img %>" alt="<%= item.name %>" class="nt-img"/>
+  <div class="list-group-item-heading nt-name">
+    <h4><b><%= sender.name %></b> shared a <%= notif.type_string %> named <b><%= item.name %></b> with you.</h4>
+  </div>
+</a>

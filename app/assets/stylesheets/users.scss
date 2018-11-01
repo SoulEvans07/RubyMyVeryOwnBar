@@ -165,7 +165,6 @@ a {
 // - user.show ---------------------------------------
 
 .user-show.header {
-  font-size: 30px;
   padding: 80px 10px 10px 20px;
   color: white;
   background-color: #378bc1;
@@ -193,9 +192,9 @@ a {
 }
 
 .user-show.user {
-  padding: 10px 20px 20px 20px;
-  position: relative;
-  bottom: 120px;
+  padding: 0 20px 0 20px;
+  position: absolute;
+  top: 60px;
 }
 
 .user-show.statistics {
@@ -206,7 +205,7 @@ a {
 .user-show.stat-padding {
   font-weight: bold;
   display: inline-block;
-  padding: 10px 15% 10px 0;
+  padding: 10px 130px 10px 0;
 }
 
 .user-show.stat-cocktails {
@@ -231,4 +230,8 @@ a {
 
 .user-show.edit-btn:hover {
   background-color: #efefef;
+}
+
+.user-show.notif-list {
+  padding: 20px;
 }
