@@ -44,6 +44,13 @@ ActiveRecord::Schema.define(version: 2018_10_26_232306) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "ingredients_users", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "ingredient_id"
+    t.index ["ingredient_id"], name: "index_ingredients_users_on_ingredient_id"
+    t.index ["user_id"], name: "index_ingredients_users_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "email"

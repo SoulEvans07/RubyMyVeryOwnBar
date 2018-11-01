@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_and_belongs_to_many :cocktails
+  has_and_belongs_to_many :ingredients
   attr_accessor :password
   before_save :encrypt_password
 

@@ -35,5 +35,10 @@ class CreateUsersAndCocktailsAndIngredients < ActiveRecord::Migration[5.2]
       t.belongs_to :user, index: true
       t.belongs_to :cocktail, index: true
     end
+
+    create_table :ingredients_users, id: false do |t|
+      t.belongs_to :user, index: true
+      t.belongs_to :ingredient, index: true
+    end
   end
 end
