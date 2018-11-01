@@ -22,6 +22,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def clear_notifs
+    @auth_user.notifications.clear
+    redirect_to profile_path
+  end
+
   # GET /users/new
   def new
   end

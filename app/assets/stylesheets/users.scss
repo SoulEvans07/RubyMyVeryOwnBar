@@ -192,6 +192,7 @@ a {
 }
 
 .user-show.user {
+  pointer-events: none;
   padding: 0 20px 0 20px;
   position: absolute;
   top: 60px;
@@ -219,6 +220,13 @@ a {
   display: inline-block;
   padding: 10px 10px;
   margin: 0;
+  border-right: 1px solid #e2e2e2;
+}
+
+.user-show.stat-notifications {
+  display: inline-block;
+  padding: 10px 10px;
+  margin: 0;
 }
 
 .user-show.edit-btn {
@@ -228,7 +236,18 @@ a {
   border-left: 1px solid #e2e2e2;
 }
 
+.user-show.clear-btn {
+  display: inline-block;
+  float: right;
+  padding: 10px 10px;
+  border-left: 1px solid #e2e2e2;
+}
+
 .user-show.edit-btn:hover {
+  background-color: #efefef;
+}
+
+.user-show.clear-btn:hover {
   background-color: #efefef;
 }
 

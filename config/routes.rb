@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'users/new', to: 'users#new', as: 'register'
   post 'users', to: 'users#create', as: 'user'
 
+  get 'users/:id/clear', to: 'users#clear_notifs' , as: 'clear_notifs'
   get 'users/:id/edit', to: 'users#edit' , as: 'edit_profile'
   put 'users/:id', to: 'users#update', as: 'update_profile'
 

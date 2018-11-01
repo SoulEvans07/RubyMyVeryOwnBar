@@ -10,8 +10,12 @@
     <div class="user-show stat-padding"></div>
     <div class="user-show stat-cocktails"><b><%= @user.cocktails.length %></b> cocktails</div>
     <div class="user-show stat-ingredients"><b><%= @user.ingredients.length %></b> ingredients</div>
+    <div class="user-show stat-notifications"><b><%= @user.notifications.length %></b> notifications</div>
     <a href="<%= edit_profile_path(@user) %>">
       <div class="user-show edit-btn"><b>Edit</b></div>
+    </a>
+    <a href="<%= clear_notifs_path(@user) %>">
+      <div class="user-show clear-btn"><b>Clear Notifications</b></div>
     </a>
   </div>
   <div class="list-group user-show notif-list">
