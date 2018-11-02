@@ -1,21 +1,21 @@
 <%= form_with(model: cocktail, local: true) do |form| %>
   <% if cocktail.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(cocktail.errors.count, "error") %> prohibited this cocktail from being saved:</h2>
+<!--    <div id="error_explanation">-->
+<!--      <h2><%#= pluralize(cocktail.errors.count, "error") %> prohibited this cocktail from being saved:</h2>-->
 
-      <ul>
-        <% cocktail.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+<!--      <ul>-->
+        <%# cocktail.errors.full_messages.each do |message| %>
+<!--          <li><%#= message %></li>-->
+        <%# end %>
+<!--      </ul>-->
+<!--    </div>-->
   <% end %>
 
   <div class="ct-form cocktail">
     <img src="<%= @cocktail.img %>" alt="<%= @cocktail.name %>" class="ct-form img"/>
     <div class="ct-form ct-front">
       <%= form.text_area :name, class: 'ct-form line-textarea', placeholder: 'Name', rows: 1, cols: '50' %>
-      <%= form.text_area :img, class: 'ct-form line-textarea', placeholder: 'Image URL', rows: 1, cols: '50%' %>
+      <%= form.text_area :img, class: 'ct-form line-textarea', placeholder: 'Image URL e.g. /imgs/glass.png', rows: 1, cols: '50%' %>
     </div>
   </div>
 

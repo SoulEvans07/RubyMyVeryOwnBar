@@ -3,5 +3,7 @@ class Ingredient < ApplicationRecord
   has_and_belongs_to_many :users
   has_and_belongs_to_many :cocktails
 
+  validates :name, {presence: true}
+  validates :img, {presence: true}
 
 end

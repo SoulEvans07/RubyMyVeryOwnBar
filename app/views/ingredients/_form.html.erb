@@ -1,21 +1,21 @@
 <%= form_with(model: ingredient, local: true) do |form| %>
   <% if ingredient.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(ingredient.errors.count, "error") %> prohibited this ingredient from being saved:</h2>
+<!--    <div id="error_explanation">-->
+<!--      <h2><%#= pluralize(ingredient.errors.count, "error") %> prohibited this ingredient from being saved:</h2>-->
 
-      <ul>
-        <% ingredient.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+<!--      <ul>-->
+        <%# ingredient.errors.full_messages.each do |message| %>
+<!--          <li><%#= message %></li>-->
+        <%# end %>
+<!--      </ul>-->
+<!--    </div>-->
   <% end %>
 
   <div class="ingr-form ingredient">
     <img src="<%= @ingredient.img %>" alt="<%= @ingredient.name %>" class="ingr-form img"/>
     <div class="ingr-form ingr-front">
       <%= form.text_area :name, class: 'ingr-form line-textarea', placeholder: 'Name', rows: 1, cols: '50'%>
-      <%= form.text_area :img, class: 'ingr-form line-textarea', placeholder: 'Image URL', rows: 1, cols: '50%'%>
+      <%= form.text_area :img, class: 'ingr-form line-textarea', placeholder: 'Image URL e.g. /imgs/ingredient.jpeg', rows: 1, cols: '50%'%>
     </div>
   </div>
 

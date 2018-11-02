@@ -13,10 +13,10 @@
 ActiveRecord::Schema.define(version: 2018_11_01_203947) do
 
   create_table "cocktails", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.text "img"
+    t.string "name", null: false
+    t.string "img", default: "/imgs/glass.jpg", null: false
     t.text "description"
-    t.string "recipe"
+    t.text "recipe"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
@@ -38,10 +38,10 @@ ActiveRecord::Schema.define(version: 2018_11_01_203947) do
   end
 
   create_table "ingredients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.text "img"
+    t.string "name", null: false
+    t.string "img", default: "/imgs/ingredient.jpeg", null: false
     t.text "description"
-    t.boolean "have"
+    t.boolean "have", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
@@ -56,24 +56,24 @@ ActiveRecord::Schema.define(version: 2018_11_01_203947) do
   end
 
   create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "sender"
-    t.bigint "item"
-    t.integer "item_type"
-    t.boolean "seen"
+    t.bigint "user_id", null: false
+    t.bigint "sender", null: false
+    t.bigint "item", null: false
+    t.integer "item_type", null: false
+    t.boolean "seen", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "encrypted_password"
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "encrypted_password", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "salt"
-    t.string "img", default: "/imgs/user.png"
+    t.string "img", default: "/imgs/user.png", null: false
   end
 
   add_foreign_key "cocktails", "users"

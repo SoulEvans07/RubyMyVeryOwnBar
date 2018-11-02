@@ -3,6 +3,17 @@ class Cocktail < ApplicationRecord
   has_and_belongs_to_many :users
   has_and_belongs_to_many :ingredients
 
+  validates :name, {presence: true}
+  validates :img, {presence: true}
+
+  before_save :normalize_blank_values
+
+  def normalize_blank_values
+    attributes.each do |column, value|
+      self[column].present? || self[column] = nil
+    end
+  end
+
   def missing?
     missing = 0
     self.ingredients.each do |ingr|
