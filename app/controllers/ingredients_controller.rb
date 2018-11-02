@@ -86,6 +86,13 @@ class IngredientsController < ApplicationController
   # DELETE /ingredients/1
   # DELETE /ingredients/1.json
   def destroy
+    notifs = Notification.where(item_type: 1, item: @ingredient.id)
+    unless notifs == nil
+      notifs.each do |nt|
+        nt.destroy
+      end
+    end
+
     @ingredient.destroy
     respond_to do |format|
       format.html {redirect_to ingredients_url, notice: 'Ingredient was successfully destroyed.'}
