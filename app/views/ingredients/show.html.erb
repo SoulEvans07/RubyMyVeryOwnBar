@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <script src="/js/share.js"></script>
+<% end %>
+
 <%= render 'layouts/userbar', user: @auth_user %>
 <div class="ingr-show page">
   <div class="ingr-show header"></div>
@@ -13,6 +17,9 @@
   </div>
 
   <div class="ingr-show btn-group btn-group-justified" role="group">
+    <div class="btn-group" role="group">
+      <input type="button" value="Share" class="btn btn-primary" onclick="share_it(<%= @ingredient.id %>, '<%= share_ingredient_path(@ingredient.id) %>')">
+    </div>
     <% if @ingredient.owner == @auth_user %>
       <div class="btn-group" role="group">
         <button class="btn btn-info" OnClick="location.href='/ingredients/<%= @ingredient.id %>/edit' ">Edit</button>

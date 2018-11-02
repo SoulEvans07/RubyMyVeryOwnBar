@@ -33,7 +33,7 @@
   <div class="ct-form ct-ingrs">
     <h4>Ingredients</h4>
     <div class="list-group">
-      <% Ingredient.all.each do |ingr| %>
+      <% @auth_user.ingredients.each do |ingr| %>
         <%= render 'ingredients/ingr-select', ingr: ingr %>
       <% end %>
     </div>

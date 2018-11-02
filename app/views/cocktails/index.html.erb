@@ -1,3 +1,6 @@
+<% content_for :head do %>
+  <script src="/js/share.js"></script>
+<% end %>
 <%= render 'layouts/userbar', user: @auth_user %>
 <div class="ct-index page">
   <div id="cocktailList" class="tab-pane fade-in fade in active">
@@ -12,33 +15,3 @@
     </div>
   </div>
 </div>
-<script>
-    $(".share").click(function (e) {
-        if (e.target.tagName === "INPUT") {
-            e.preventDefault();
-
-            var btn = $("input[type='button'][name='" + e.target.name + "']");
-            btn.click();
-        }
-    });
-
-    function share_it(id, path) {
-        var username = prompt("Share with");
-        $.ajax({
-            type: 'POST',
-            data: {
-                authenticity_token: "<%= form_authenticity_token %>",
-                id: id,
-                username_to: username
-            },
-            dataType: 'json',
-            url: path,
-            success: function (res) {
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                console.log(xhr.status);
-                console.log(thrownError);
-            }
-        });
-    }
-</script>

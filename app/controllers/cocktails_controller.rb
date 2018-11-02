@@ -13,11 +13,20 @@ class CocktailsController < ApplicationController
 
   def share
     @to = User.find_by_name(params[:username_to])
-    @ct = Cocktail.find_by_id(params[:id])
-    @to.cocktails << @ct
 
-    @notif = Notification.new(sender: @auth_user.id, item: @ct.id, item_type: 0, seen: false)
-    @to.notifications << @notif
+    find = @to.cocktails.select {|ct| ct.id == Integer(params[:id])}
+
+    if find.empty?
+      @ct = Cocktail.find_by_id(params[:id])
+      @to.cocktails << @ct
+
+      @notif = Notification.new(sender: @auth_user.id, item: @ct.id, item_type: 0, seen: false)
+      @to.notifications << @notif
+
+      render :json => @ct
+    else
+      render json: {'error': params[:username_to].to_s + " already have this cocktail."}, status: 400
+    end
   end
 
   # GET /cocktails/1
@@ -48,9 +57,7 @@ class CocktailsController < ApplicationController
           end
         end
         @auth_user.cocktails << @cocktail
-
-        format.html {redirect_to @cocktail, notice: 'Cocktail was successfully created for ' + @auth_user.name + '.'}
-        format.json {render :show, status: :created, location: @cocktail}
+        format.html {redirect_to cocktails_path, notice: 'Cocktail was successfully updated.'}
       else
         format.html {render :new}
         format.json {render json: @cocktail.errors, status: :unprocessable_entity}
@@ -80,6 +87,13 @@ class CocktailsController < ApplicationController
   # DELETE /cocktails/1
   # DELETE /cocktails/1.json
   def destroy
+    notifs = Notification.where(item_type: 0, item: @cocktail.id)
+    unless notifs == nil
+      notifs.each do |nt|
+        nt.destroy
+      end
+    end
+
     @cocktail.destroy
     respond_to do |format|
       format.html {redirect_to cocktails_url, notice: 'Cocktail was successfully destroyed.'}

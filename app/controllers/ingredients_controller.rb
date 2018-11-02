@@ -13,11 +13,20 @@ class IngredientsController < ApplicationController
 
   def share
     @to = User.find_by_name(params[:username_to])
-    @ingr = Ingredient.find_by_id(params[:id])
-    @to.ingredients << @ingr
 
-    @notif = Notification.new(sender: @auth_user.id, item: @ingr.id, item_type: 1, seen: false)
-    @to.notifications << @notif
+    find = @to.ingredients.select {|ingr| ingr.id == Integer(params[:id])}
+
+    if find.empty?
+      @ingr = Ingredient.find_by_id(params[:id])
+      @to.ingredients << @ingr
+
+      @notif = Notification.new(sender: @auth_user.id, item: @ingr.id, item_type: 1, seen: false)
+      @to.notifications << @notif
+
+      render :json => @ingr
+    else
+      render json: {'error': params[:username_to].to_s + " already have this ingredient."}, status: 400
+    end
   end
 
   # GET /ingredients/1
