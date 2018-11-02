@@ -14,6 +14,11 @@ class CocktailsController < ApplicationController
   def share
     @to = User.find_by_name(params[:username_to])
 
+    if @to == nil
+      render json: {'error': params[:username_to].to_s + " doesn't exist."}, status: 400
+      return
+    end
+
     find = @to.cocktails.select {|ct| ct.id == Integer(params[:id])}
 
     if find.empty?
