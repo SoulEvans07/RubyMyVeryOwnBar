@@ -32,6 +32,9 @@ class IngredientsController < ApplicationController
   # GET /ingredients/1
   # GET /ingredients/1.json
   def show
+    if @ingredient.users.select { |user| user == @auth_user }.empty?
+      render(:file => File.join(Rails.root, 'public/403.html'), :status => 403, :layout => false)
+    end
   end
 
   # GET /ingredients/new
@@ -114,7 +117,10 @@ class IngredientsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_ingredient
-    @ingredient = Ingredient.find(params[:id])
+    @ingredient = Ingredient.find_by_id(params[:id])
+    if @ingredient == nil
+      render(:file => File.join(Rails.root, 'public/404.html'), :status => 404, :layout => false)
+    end
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

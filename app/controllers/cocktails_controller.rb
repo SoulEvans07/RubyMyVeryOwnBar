@@ -32,6 +32,9 @@ class CocktailsController < ApplicationController
   # GET /cocktails/1
   # GET /cocktails/1.json
   def show
+    if @cocktail.users.select { |user| user == @auth_user }.empty?
+      render(:file => File.join(Rails.root, 'public/403.html'), :status => 403, :layout => false)
+    end
   end
 
   # GET /cocktails/new
@@ -114,7 +117,10 @@ class CocktailsController < ApplicationController
   end
 
   def set_cocktail
-    @cocktail = Cocktail.find(params[:id])
+    @cocktail = Cocktail.find_by_id(params[:id])
+    if @cocktail == nil
+        render(:file => File.join(Rails.root, 'public/404.html'), :status => 404, :layout => false)
+    end
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
