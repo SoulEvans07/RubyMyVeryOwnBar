@@ -15,3 +15,13 @@
     </div>
   </div>
 </div>
+<script>
+    $(".share").click(function (e) {
+        if (e.target.tagName === "INPUT") {
+            e.preventDefault();
+
+            var btn = $("input[type='button'][name='" + e.target.name + "']");
+            btn.click();
+        }
+    });
+</script>

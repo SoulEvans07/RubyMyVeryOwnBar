@@ -1,12 +1,3 @@
-$(".share").click(function (e) {
-    if (e.target.tagName === "INPUT") {
-        e.preventDefault();
-
-        var btn = $("input[type='button'][name='" + e.target.name + "']");
-        btn.click();
-    }
-});
-
 function share_it(id, path) {
     var username = prompt("Share with");
     if (username == null)
