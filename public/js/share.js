@@ -9,6 +9,8 @@ $(".share").click(function (e) {
 
 function share_it(id, path) {
     var username = prompt("Share with");
+    if (username == null)
+        return;
     $.ajax({
         type: 'POST',
         data: {
