@@ -1,7 +1,7 @@
 <% content_for :head do %>
   <link rel="stylesheet" href="/assets/cocktail-partial.css.scss">
 <% end %>
-<a href="cocktails/<%= ct.id %>" class="list-group-item ctp-a <%= ct.missing? > 0 ? 'missing' : nil %>">
+<a href="cocktails/<%= ct.id %>" class="list-group-item share ctp-a <%= ct.missing? > 0 ? 'missing' : nil %>">
   <img src="<%= ct.img %>" alt="<%= ct.name %>" class="ctp-img"/>
   <div class="list-group-item-heading ctp-name">
     <h4><%= ct.name %></h4>
