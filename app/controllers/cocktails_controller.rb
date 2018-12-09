@@ -124,7 +124,7 @@ class CocktailsController < ApplicationController
   def set_cocktail
     @cocktail = Cocktail.find_by_id(params[:id])
     if @cocktail == nil
-        render(:file => File.join(Rails.root, 'public/404.html'), :status => 404, :layout => false)
+      render(:file => File.join(Rails.root, 'public/404.html'), :status => 404, :layout => false)
     end
   end
 

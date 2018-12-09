@@ -2,12 +2,12 @@
 
 one:
   user: one
-  sender: 
-  item: 
-  type: 1
+  sender: 0
+  item: 0
+  item_type: 1
 
 two:
   user: two
-  sender: 
-  item: 
-  type: 1
+  sender: 0
+  item: 0
+  item_type: 1
