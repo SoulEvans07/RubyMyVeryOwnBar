@@ -6,7 +6,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "encrypt password" do
-    assert_equal users(:other).encrypted_password, Digest::SHA1.hexdigest(users(:other).salt+'hidden')
+    assert_equal users(:other).encrypted_password, Digest::SHA1.hexdigest('hidden'+users(:other).salt)
   end
 
   test "cannot save without email address" do
