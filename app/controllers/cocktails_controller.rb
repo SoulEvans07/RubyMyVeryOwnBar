@@ -114,6 +114,7 @@ class CocktailsController < ApplicationController
   def check_auth
     unless session[:user]
       redirect_to welcome_path
+      return
     end
     @auth_user = User.find_by_id(session[:user])
     unless @auth_user

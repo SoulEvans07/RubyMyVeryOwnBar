@@ -3,13 +3,13 @@
 test:
   name: test
   email: test@gmail.com
-  encrypted_password: <%= Digest::SHA1.hexdigest 'salt' + 'hidden' %>
-  salt: salt
+  encrypted_password: <%= Digest::SHA1.hexdigest 'hidden' + 'a' %>
+  salt: a
   img: /imgs/user.png
 
 other:
   name: other
   email: other@gmail.com
-  encrypted_password: <%= Digest::SHA1.hexdigest 'salt' + 'hidden' %>
-  salt: salt
+  encrypted_password: <%= Digest::SHA1.hexdigest 'hidden' + 'a' %>
+  salt: a
   img: /imgs/user.png
