@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-test:
+test_user:
   name: test
   email: test@gmail.com
   encrypted_password: <%= Digest::SHA1.hexdigest 'hidden' + 'a' %>
   salt: a
   img: /imgs/user.png
 
-other:
+other_user:
   name: other
   email: other@gmail.com
   encrypted_password: <%= Digest::SHA1.hexdigest 'hidden' + 'a' %>
